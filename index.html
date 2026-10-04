@@ -153,25 +153,32 @@ section{position:relative;z-index:1}
 #about{padding:120px 0}
 .hero-avatar{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold);box-shadow:0 0 8px rgba(212,175,55,.4)}
 .about-top-grid{display:grid;grid-template-columns:310px 1fr;gap:40px;align-items:start;margin-top:48px}
-.portrait-card{background:linear-gradient(145deg,rgba(26,20,48,.85),rgba(13,10,26,.95));border:1px solid rgba(212,175,55,.35);border-radius:18px;padding:16px;box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 25px rgba(212,175,55,.1);position:relative;overflow:hidden;transition:all 1.8s cubic-bezier(0.25, 1, 0.5, 1)}
-.portrait-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.6);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 35px rgba(212,175,55,.25)}
+.portrait-card{background:linear-gradient(145deg,rgba(26,20,48,.85),rgba(13,10,26,.95));border:1px solid rgba(212,175,55,.35);border-radius:18px;padding:16px;box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 25px rgba(212,175,55,.1);position:relative;overflow:hidden;transition:all 1.6s cubic-bezier(0.25, 1, 0.5, 1)}
+.portrait-card:hover{border-color:rgba(212,175,55,.55);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 30px rgba(212,175,55,.2)}
 .portrait-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(212,175,55,.12),transparent 65%);pointer-events:none}
-.portrait-img-wrap{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,.25);background:#07050e;cursor:pointer}
-.portrait-img{width:100%;height:350px;object-fit:cover;object-position:center 15%;display:block;transition:filter 2.4s cubic-bezier(0.2, 0.8, 0.25, 1), transform .6s ease;filter:brightness(0.85) contrast(1.04) saturate(0.94)}
+.portrait-img-wrap{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,.25);background:#05040a;cursor:pointer}
+
+/* Image initially almost completely dark in shadows */
+.portrait-img{width:100%;height:350px;object-fit:cover;object-position:center 15%;display:block;transition:filter 2.4s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 2.4s cubic-bezier(0.2, 0.8, 0.25, 1), transform .6s ease;filter:brightness(0.04) contrast(1.1) saturate(0.2);opacity:0.35}
 .portrait-card:hover .portrait-img{transform:scale(1.02)}
-.portrait-lumos-glow{position:absolute;inset:0;border-radius:12px;pointer-events:none;background:radial-gradient(ellipse at 50% 35%,rgba(255,248,220,.45) 0%,rgba(212,175,55,.25) 45%,transparent 75%);opacity:0;transition:opacity 2.2s ease;mix-blend-mode:screen}
-.portrait-lumos-btn{position:absolute;top:12px;right:12px;background:rgba(13,10,26,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(212,175,55,.45);border-radius:20px;padding:6px 14px;font-size:.72rem;font-family:var(--font-mono);color:var(--gold);display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all .35s ease;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,.5)}
+
+/* Dark shadow veil overlay */
+.portrait-shadow-veil{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(13,10,26,.8) 0%,rgba(5,3,10,.96) 80%);pointer-events:none;transition:opacity 2.2s cubic-bezier(0.2, 0.8, 0.25, 1);z-index:2;opacity:1}
+
+/* Lumos button */
+.portrait-lumos-btn{position:absolute;top:12px;right:12px;background:rgba(13,10,26,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(212,175,55,.45);border-radius:20px;padding:6px 14px;font-size:.72rem;font-family:var(--font-mono);color:var(--gold);display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all .35s ease;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,.6)}
 .portrait-lumos-btn:hover{background:rgba(212,175,55,.22);border-color:var(--gold);transform:scale(1.05);box-shadow:0 0 16px rgba(212,175,55,.6)}
-.portrait-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(13,10,26,.88);backdrop-filter:blur(6px);border:1px solid rgba(212,175,55,.25);color:var(--gold2);font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;padding:4px 12px;border-radius:14px;pointer-events:none;transition:all .4s ease;opacity:0.88;white-space:nowrap}
+
+/* Hint at bottom */
+.portrait-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(13,10,26,.88);backdrop-filter:blur(6px);border:1px solid rgba(212,175,55,.25);color:var(--gold2);font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;padding:4px 12px;border-radius:14px;pointer-events:none;transition:all .4s ease;opacity:0.9;white-space:nowrap;z-index:10}
 .portrait-card:hover .portrait-hint{opacity:1;border-color:rgba(212,175,55,.5)}
 
-/* ===== LUMOS ACTIVE STATE — SLOW RADIANT BLOOM TO FULLEST BRIGHTNESS ===== */
-.portrait-card.lumos-active{border-color:rgba(255,235,130,.9);box-shadow:0 0 60px rgba(255,225,90,.55),0 0 120px rgba(212,175,55,.4),0 20px 60px rgba(0,0,0,.7),inset 0 0 35px rgba(255,245,180,.4)}
-.portrait-card.lumos-active .portrait-img{filter:brightness(1.35) contrast(1.15) saturate(1.12) drop-shadow(0 0 35px rgba(255,235,140,.8))}
-.portrait-card.lumos-active .portrait-lumos-glow{opacity:1;animation:lumos-pulse 3s infinite alternate}
-@keyframes lumos-pulse{0%{opacity:.75;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
-.portrait-card.lumos-active .portrait-lumos-btn{background:linear-gradient(135deg,var(--gold),#fff4cc);color:#0d0a1a;font-weight:700;border-color:#fff;box-shadow:0 0 20px rgba(255,230,120,.85);transform:scale(1.03)}
-.portrait-card.lumos-active .portrait-hint{background:rgba(212,175,55,.2);border-color:var(--gold);color:#fff8db;box-shadow:0 0 14px rgba(212,175,55,.5)}
+/* ===== LUMOS ACTIVE STATE — SHADOWS DISSOLVE, PICTURE APPEARS AT PERFECT 100% BRIGHTNESS ===== */
+.portrait-card.lumos-active{border-color:rgba(212,175,55,.75);box-shadow:0 0 45px rgba(212,175,55,.35),0 20px 50px rgba(0,0,0,.6),inset 0 0 25px rgba(212,175,55,.15)}
+.portrait-card.lumos-active .portrait-shadow-veil{opacity:0}
+.portrait-card.lumos-active .portrait-img{filter:brightness(1) contrast(1) saturate(1);opacity:1}
+.portrait-card.lumos-active .portrait-lumos-btn{background:linear-gradient(135deg,var(--gold),#ffeaa7);color:#0d0a1a;font-weight:700;border-color:#fff;box-shadow:0 0 18px rgba(212,175,55,.7);transform:scale(1.03)}
+.portrait-card.lumos-active .portrait-hint{background:rgba(212,175,55,.18);border-color:var(--gold);color:#fff8db;box-shadow:0 0 12px rgba(212,175,55,.4)}
 
 .portrait-details{padding:14px 4px 4px;text-align:center}
 .portrait-name{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--gold);letter-spacing:.03em;margin-bottom:3px}
@@ -513,13 +520,13 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
     <div class="about-top-grid">
       <!-- Portrait Card -->
       <div class="portrait-card fade-up" id="portrait-card">
-        <div class="portrait-img-wrap" onclick="toggleLumos(event)" title="Click portrait to cast Lumos!">
+        <div class="portrait-img-wrap" onclick="toggleLumos(event)" title="Click to cast Lumos!">
           <img src="passport_size.png" alt="Kartik Garg" class="portrait-img" id="portrait-img" loading="lazy">
-          <div class="portrait-lumos-glow" id="portrait-lumos-glow"></div>
+          <div class="portrait-shadow-veil" id="portrait-shadow-veil"></div>
           <button class="portrait-lumos-btn" id="lumos-btn" onclick="toggleLumos(event)" title="Click to cast Lumos / Nox!">
             <span>🪄</span> <span id="lumos-text">Cast Lumos</span>
           </button>
-          <div class="portrait-hint" id="portrait-hint">✦ Click to Cast Lumos ✦</div>
+          <div class="portrait-hint" id="portrait-hint">✦ Cloaked in Shadows · Cast Lumos ✦</div>
         </div>
         <div class="portrait-details">
           <div class="portrait-name">Kartik Garg</div>
@@ -1313,16 +1320,16 @@ function toggleLumos(event) {
 
   const isActive = card.classList.toggle('lumos-active');
   if (isActive) {
-    if (btnText) btnText.textContent = 'Lumos Maxima!';
-    if (hint) hint.innerHTML = '✨ Radiant Brilliance · Click for Nox';
+    if (btnText) btnText.textContent = 'Cast Nox';
+    if (hint) hint.innerHTML = '✨ Illuminated · Click for Nox';
     triggerLumosBurst(card);
     playSpellSound('lumos');
-    showSpellBanner('⚡ Lumos Maxima! The portrait shines with fullest radiance.');
+    showSpellBanner('⚡ Lumos! The shadows lift and the portrait appears.');
   } else {
     if (btnText) btnText.textContent = 'Cast Lumos';
-    if (hint) hint.innerHTML = '✦ Click portrait or badge to cast Lumos ✦';
+    if (hint) hint.innerHTML = '✦ Cloaked in Shadows · Cast Lumos ✦';
     playSpellSound('nox');
-    showSpellBanner('🌙 Nox... The spell recedes softly into candlelight.');
+    showSpellBanner('🌙 Nox... The portrait recedes into darkness.');
   }
 }
 

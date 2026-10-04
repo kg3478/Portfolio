@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartik Garg ⚡ — AI Product Wizard & Builder</title>
+<meta name="description" content="Kartik Garg — Computer Engineering student at Thapar Institute, Co-Founder of Rabonna, building AI products at the intersection of spells, UX, and growth. Aspiring PM, AI Builder, Startup Operator.">
+<meta property="og:title" content="Kartik Garg ⚡ — The Product Wizard">
+<meta property="og:description" content="Where code meets magic. Building AI products that enchant users and move real metrics.">
+<meta name="keywords" content="Kartik Garg, Product Manager, AI Products, Thapar, TIET, PM Intern, APM, Harry Potter Portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES — THE WIZARDING WORLD PALETTE ===== */
+:root {
+  --bg: #08060f;
+  --bg2: #0d0a1a;
+  --bg3: #130f22;
+  --bg4: #1a1530;
+  --surface: rgba(212,175,55,0.05);
+  --surface2: rgba(212,175,55,0.10);
+  --surface3: rgba(212,175,55,0.15);
+  --border: rgba(212,175,55,0.12);
+  --border2: rgba(212,175,55,0.22);
+  --border3: rgba(212,175,55,0.35);
+  --text: #f5e6c8;
+  --text2: #c4a96a;
+  --text3: #7a6040;
+  --gold: #d4af37;
+  --gold2: #f0c840;
+  --gold3: #ffd700;
+  --crimson: #8b1a1a;
+  --crimson2: #b52828;
+  --silver: #c8c8d4;
+  --purple: #7c3aed;
+  --purple2: #a855f7;
+  --cyan: #7ef0d4;
+  --cyan2: #34d399;
+  --rose: #e11d48;
+  --amber: #f59e0b;
+  --accent: #d4af37;
+  --accent2: #f0c840;
+  --glow: 0 0 40px rgba(212,175,55,0.18);
+  --glow2: 0 0 60px rgba(212,175,55,0.12);
+  --spell-glow: 0 0 20px rgba(126,240,212,0.3);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Lora', serif;
+  --font-sub: 'Crimson Text', serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+::selection{background:rgba(212,175,55,0.25);color:var(--gold2)}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--gold),var(--purple2));border-radius:3px}
+
+/* ===== MAGICAL STARFIELD BACKGROUND ===== */
+#starfield{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--dur,3s) var(--delay,0s) infinite alternate}
+@keyframes twinkle{0%{opacity:.1;transform:scale(1)}100%{opacity:.8;transform:scale(1.3)}}
+.shooting-star{position:absolute;width:2px;height:80px;background:linear-gradient(180deg,transparent,rgba(212,175,55,.8),transparent);border-radius:2px;animation:shoot var(--sdur,4s) var(--sdelay,0s) infinite linear;transform:rotate(-45deg)}
+@keyframes shoot{0%{transform:translate(-100px,-100px) rotate(-45deg);opacity:0}10%{opacity:1}90%{opacity:.6}100%{transform:translate(200vw,200vh) rotate(-45deg);opacity:0}}
+
+/* ===== LOADER — THE SORTING HAT ===== */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .8s,visibility .8s}
+#loader.done{opacity:0;visibility:hidden}
+.loader-hat{font-size:5rem;animation:hat-wobble 1.5s ease-in-out infinite}
+@keyframes hat-wobble{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.loader-title{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-align:center}
+.loader-spell{font-family:var(--font-mono);font-size:.85rem;color:var(--text2);letter-spacing:.15em;min-height:1.2em;text-align:center}
+.loader-bar{width:220px;height:2px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan),var(--purple2));border-radius:2px;width:0;transition:width .05s linear;box-shadow:0 0 8px var(--gold)}
+
+/* ===== SCROLL PROGRESS — GOLDEN SNITCH TRAIL ===== */
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--crimson2),var(--gold),var(--cyan));z-index:9998;width:0;transition:width .1s;box-shadow:0 0 6px var(--gold)}
+
+/* ===== MAGIC CURSOR ===== */
+#magic-cursor{position:fixed;pointer-events:none;width:24px;height:24px;z-index:9997;transform:translate(-50%,-50%);transition:transform .1s}
+#magic-cursor-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 8px var(--gold)}
+#magic-cursor-ring{width:24px;height:24px;border-radius:50%;border:1px solid rgba(212,175,55,0.5);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:cursor-ring 1.5s linear infinite}
+@keyframes cursor-ring{0%{transform:translate(-50%,-50%) scale(1);opacity:.6}100%{transform:translate(-50%,-50%) scale(2.5);opacity:0}}
+.spark-particle{position:fixed;pointer-events:none;width:4px;height:4px;border-radius:50%;z-index:9996;animation:spark-fly var(--dur,.6s) ease-out forwards}
+@keyframes spark-fly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx,20px),var(--dy,-30px)) scale(0);opacity:0}}
+
+/* ===== NAVIGATION — MARAUDER'S MAP ===== */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;display:flex;align-items:center;gap:4px;background:rgba(13,10,26,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:50px;padding:8px 14px;transition:all .3s;box-shadow:0 4px 24px rgba(0,0,0,.4),0 0 0 1px rgba(212,175,55,.05)}
+.nav-logo{font-family:var(--font-display);font-weight:900;font-size:.95rem;color:var(--gold);padding:6px 14px;letter-spacing:.05em;display:flex;align-items:center;gap:6px;text-shadow:0 0 12px rgba(212,175,55,.5)}
+.nav-logo span{font-size:1.1rem}
+.nav-links{display:flex;gap:2px}
+.nav-link{color:var(--text2);text-decoration:none;font-size:.78rem;font-weight:600;padding:6px 14px;border-radius:30px;transition:all .25s;font-family:var(--font-display);letter-spacing:.06em;text-transform:uppercase}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:var(--surface);text-shadow:0 0 8px rgba(212,175,55,.4)}
+.nav-actions{display:flex;gap:8px;align-items:center;margin-left:8px}
+.nav-hire{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--amber));color:#0d0a1a;border:none;padding:7px 18px;border-radius:30px;font-size:.75rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:var(--font-display);letter-spacing:.05em;transition:all .2s;box-shadow:0 0 12px rgba(212,175,55,.3)}
+.nav-hire:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(212,175,55,.5)}
+
+/* ===== SECTIONS & CONTAINERS ===== */
+section{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:0 40px}
+.section-label{font-family:var(--font-mono);font-size:.72rem;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-label::before{content:'✦';font-size:.6rem}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;color:var(--text)}
+.section-sub{font-size:1rem;color:var(--text2);max-width:520px;line-height:1.8;font-family:var(--font-sub)}
+
+/* ===== HERO — PLATFORM 9¾ ===== */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-gradient{position:absolute;top:-10%;left:-15%;width:65%;height:70%;background:radial-gradient(ellipse,rgba(124,58,237,.1) 0%,transparent 70%);pointer-events:none}
+.hero-gradient2{position:absolute;bottom:-10%;right:-10%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(212,175,55,.07) 0%,transparent 70%);pointer-events:none}
+.hero-gradient3{position:absolute;top:30%;right:20%;width:40%;height:40%;background:radial-gradient(ellipse,rgba(126,240,212,.05) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,.04) 1px,transparent 1px);background-size:70px 70px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);opacity:.5}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:30px;padding:7px 18px;font-size:.78rem;color:var(--text2);margin-bottom:36px;font-family:var(--font-mono);letter-spacing:.06em}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan2);animation:pulse 2s infinite;box-shadow:0 0 6px var(--cyan2)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-headline{font-family:var(--font-display);font-size:clamp(2.6rem,6.5vw,5.2rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:28px;color:var(--text)}
+.hero-headline .line{display:block;overflow:hidden}
+.hero-headline .word{display:inline-block;transform:translateY(110%);opacity:0;transition:transform .75s cubic-bezier(.16,1,.3,1),opacity .75s;transition-delay:var(--delay)}
+.hero-headline .word.show{transform:translateY(0);opacity:1}
+.hero-headline .gold-word{background:linear-gradient(135deg,var(--gold),var(--gold2),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none;filter:drop-shadow(0 0 20px rgba(212,175,55,.4))}
+.hero-headline .cyan-word{background:linear-gradient(135deg,var(--cyan),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:var(--font-sub);font-size:1.15rem;color:var(--text2);max-width:580px;line-height:1.8;margin-bottom:52px;opacity:0;transform:translateY(20px);transition:all .8s .6s;font-style:italic}
+.hero-sub.show{opacity:1;transform:translateY(0)}
+.hero-sub strong{color:var(--text);font-style:normal}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;opacity:0;transform:translateY(20px);transition:all .8s .8s}
+.hero-ctas.show{opacity:1;transform:translateY(0)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--amber));color:#0d0a1a;border:none;padding:14px 30px;border-radius:50px;font-size:.9rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s;font-family:var(--font-display);letter-spacing:.04em;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(212,175,55,.3)}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(212,175,55,.5)}
+.btn-primary:hover::before{opacity:1}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border2);color:var(--text);padding:14px 30px;border-radius:50px;font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .25s;font-family:var(--font-display);letter-spacing:.04em}
+.btn-secondary:hover{background:var(--surface2);border-color:var(--border3);transform:translateY(-2px);box-shadow:0 4px 20px rgba(212,175,55,.15)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--border);color:var(--text2);padding:14px 30px;border-radius:50px;font-size:.9rem;cursor:pointer;text-decoration:none;transition:all .25s;font-family:var(--font-display);letter-spacing:.04em}
+.btn-ghost:hover{color:var(--text);border-color:var(--border2)}
+.hero-stats{display:flex;gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid var(--border);opacity:0;transition:opacity .8s 1.1s;flex-wrap:wrap}
+.hero-stats.show{opacity:1}
+.stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:900;color:var(--gold);letter-spacing:-.02em;text-shadow:0 0 12px rgba(212,175,55,.3)}
+.stat-label{font-size:.75rem;color:var(--text3);margin-top:4px;font-family:var(--font-mono);letter-spacing:.06em}
+
+/* ===== FLOATING SPELL ORBS ===== */
+.spell-orb{position:absolute;border-radius:50%;pointer-events:none;animation:orb-float var(--odur,6s) ease-in-out infinite alternate}
+@keyframes orb-float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(var(--ox,20px),var(--oy,-20px)) scale(1.05)}}
+
+/* ===== ABOUT — THE PARCHMENT LETTER ===== */
+#about{padding:120px 0}
+.parchment-card{background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(139,26,26,.04));border:1px solid var(--border);border-radius:var(--radius);padding:40px;position:relative;overflow:hidden}
+.parchment-card::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='.02'/%3E%3C/svg%3E");opacity:.4;pointer-events:none}
+.wax-seal{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--crimson),var(--crimson2));border:2px solid rgba(212,175,55,.3);font-size:1.4rem;margin-bottom:20px;box-shadow:0 4px 16px rgba(139,26,26,.4)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px}
+.about-text p{color:var(--text2);line-height:1.9;margin-bottom:20px;font-size:1rem;font-family:var(--font-sub)}
+.about-text p strong{color:var(--text);font-family:var(--font-body)}
+.about-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.skill-chip{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;transition:all .25s;position:relative;overflow:hidden}
+.skill-chip::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s}
+.skill-chip:hover{background:var(--surface2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--glow)}
+.skill-chip:hover::before{opacity:1}
+.skill-chip-icon{font-size:1.3rem;margin-bottom:10px}
+.skill-chip-label{font-size:.85rem;font-weight:600;color:var(--text);font-family:var(--font-display);letter-spacing:.03em}
+.skill-chip-sub{font-size:.72rem;color:var(--text3);margin-top:4px;font-family:var(--font-mono)}
+
+/* ===== PROJECTS — THE SPELLBOOK ===== */
+#projects{padding:120px 0;background:linear-gradient(180deg,transparent,rgba(124,58,237,.03),transparent)}
+.projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+/* ===== PROJECT CARDS — SPELL CARDS ===== */
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:all .35s;cursor:default}
+.project-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),var(--card-glow,rgba(212,175,55,.06)) 0%,transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.project-card:hover::before{opacity:1}
+.project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:.4s;transform-origin:center}
+.project-card:hover::after{transform:scaleX(1)}
+.project-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 8px 40px rgba(0,0,0,.4),var(--glow)}
+.project-card.featured{grid-column:span 2;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.project-card.full-width{grid-column:span 2}
+
+/* Spell badge */
+.spell-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);color:var(--gold2);font-size:.7rem;font-family:var(--font-display);padding:4px 12px;border-radius:20px;margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
+.spell-badge.startup{background:rgba(126,240,212,.08);border-color:rgba(126,240,212,.2);color:var(--cyan)}
+.spell-badge.coming-soon{background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.2);color:var(--purple2)}
+.spell-badge.featured{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.3);color:var(--gold3)}
+.spell-badge.ml{background:rgba(139,26,26,.12);border-color:rgba(139,26,26,.3);color:var(--crimson2)}
+
+/* Spell name (project name) */
+.spell-name-small{font-family:var(--font-mono);font-size:.72rem;color:var(--text3);margin-bottom:4px;letter-spacing:.08em}
+.card-title{font-family:var(--font-display);font-size:1.35rem;font-weight:800;letter-spacing:.02em;color:var(--text);margin-bottom:8px;line-height:1.2}
+.card-role{font-size:.8rem;color:var(--text3);font-family:var(--font-mono);margin-bottom:14px;letter-spacing:.04em}
+.card-problem{font-size:.9rem;color:var(--text2);line-height:1.7;margin-bottom:16px;font-family:var(--font-sub)}
+.card-impact{display:inline-flex;align-items:center;gap:6px;background:rgba(126,240,212,.06);border:1px solid rgba(126,240,212,.15);color:var(--cyan);font-size:.78rem;font-family:var(--font-mono);padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.card-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.stack-tag{font-size:.7rem;font-family:var(--font-mono);color:var(--text3);background:var(--surface);border:1px solid var(--border);padding:3px 10px;border-radius:20px;transition:.2s}
+.stack-tag:hover{border-color:var(--border2);color:var(--text2)}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn-card{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:8px 16px;border-radius:30px;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:var(--font-display);letter-spacing:.04em}
+.btn-live{background:linear-gradient(135deg,var(--gold),var(--amber));color:#0d0a1a;box-shadow:0 2px 12px rgba(212,175,55,.3)}
+.btn-live:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(212,175,55,.5)}
+.btn-github{background:var(--surface);border:1px solid var(--border);color:var(--text2)}
+.btn-github:hover{background:var(--surface2);border-color:var(--border2);color:var(--text)}
+.btn-case{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);color:var(--purple2)}
+.btn-case:hover{background:rgba(124,58,237,.2)}
+.arrow-icon{font-size:.7rem;transition:transform .2s}
+.btn-live:hover .arrow-icon,.btn-github:hover .arrow-icon{transform:translate(2px,-2px)}
+
+/* Featured card visual panel */
+.card-visual{background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(124,58,237,.04));border:1px solid var(--border);border-radius:12px;padding:32px;display:flex;align-items:center;justify-content:center;min-height:240px;position:relative;overflow:hidden}
+.card-visual-inner{text-align:center;position:relative;z-index:1}
+.card-visual-big{font-family:var(--font-display);font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1;filter:drop-shadow(0 0 16px rgba(212,175,55,.3))}
+.card-visual-label{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);margin-top:10px;letter-spacing:.08em}
+.card-visual-sub{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--cyan);letter-spacing:-.03em;filter:drop-shadow(0 0 10px rgba(126,240,212,.4))}
+
+/* CPO Responsibilities Panel */
+.cpo-panel{display:flex;flex-direction:column;gap:12px}
+.cpo-item{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--text2);font-family:var(--font-sub)}
+.cpo-check{color:var(--cyan);font-size:.9rem;flex-shrink:0}
+
+/* ===== COMING SOON CARD — SENTRIX ===== */
+.coming-soon-card{background:linear-gradient(135deg,rgba(124,58,237,.07),rgba(212,175,55,.04));border:1px solid rgba(124,58,237,.2);border-radius:var(--radius);padding:56px;text-align:center;position:relative;overflow:hidden;margin-top:20px;grid-column:span 2}
+.coming-soon-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(124,58,237,.1) 0%,transparent 60%);pointer-events:none}
+.coming-soon-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);color:var(--purple2);font-size:.8rem;font-family:var(--font-display);padding:6px 18px;border-radius:20px;margin-bottom:24px;letter-spacing:.06em;animation:glow-pulse-purple 2s infinite}
+@keyframes glow-pulse-purple{0%,100%{box-shadow:0 0 0 0 rgba(168,85,247,0)}50%{box-shadow:0 0 16px rgba(168,85,247,.25)}}
+.sentrix-title{font-family:var(--font-display);font-size:3rem;font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,var(--text),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px}
+.sentrix-sub{color:var(--text2);max-width:540px;margin:0 auto 36px;line-height:1.8;font-family:var(--font-sub);font-size:1rem}
+.sentrix-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ===== CASE STUDIES — THE DAILY PROPHET ===== */
+#case-studies{padding:120px 0}
+.prophet-header{display:flex;align-items:center;gap:20px;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.prophet-masthead{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--gold);letter-spacing:.02em;text-shadow:0 0 16px rgba(212,175,55,.3)}
+.prophet-sub{font-family:var(--font-sub);font-size:.85rem;color:var(--text3);font-style:italic}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.case-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.case-card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:var(--glow)}
+.case-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--cyan));transform:scaleX(0);transition:.3s;transform-origin:left}
+.case-card:hover::after{transform:scaleX(1)}
+.case-company{font-family:var(--font-display);font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.case-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700;letter-spacing:.01em;margin-bottom:10px;color:var(--text)}
+.case-insight{font-size:.88rem;color:var(--text2);line-height:1.75;margin-bottom:16px;font-family:var(--font-sub)}
+.case-tags{display:flex;gap:6px;flex-wrap:wrap}
+.case-tag{font-size:.68rem;font-family:var(--font-mono);color:var(--text3);background:var(--surface);border:1px solid var(--border);padding:3px 10px;border-radius:20px}
+
+/* ===== EXPERIENCE — THE HOGWARTS SCROLL ===== */
+#experience{padding:120px 0;background:linear-gradient(180deg,transparent,rgba(212,175,55,.02),transparent)}
+.timeline{position:relative;margin-top:60px;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--border) 10%,var(--gold) 50%,var(--border) 90%,transparent)}
+.timeline-item{position:relative;margin-bottom:52px;padding-left:32px}
+.timeline-dot{position:absolute;left:-39px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);box-shadow:0 0 12px rgba(212,175,55,.6),0 0 24px rgba(212,175,55,.2)}
+.timeline-date{font-family:var(--font-mono);font-size:.72rem;color:var(--text3);margin-bottom:10px;letter-spacing:.08em}
+.timeline-title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;letter-spacing:.02em;margin-bottom:4px;color:var(--text)}
+.timeline-org{font-size:.9rem;color:var(--gold);margin-bottom:12px;font-weight:600;font-family:var(--font-sub);font-style:italic}
+.timeline-desc{font-size:.9rem;color:var(--text2);line-height:1.8;font-family:var(--font-sub)}
+.timeline-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+
+/* Education card */
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:16px;position:relative;overflow:hidden}
+.edu-card::before{content:'⚡';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:4rem;opacity:.04}
+.learning-card{background:linear-gradient(135deg,rgba(212,175,55,.05),rgba(124,58,237,.03));border:1px solid rgba(212,175,55,.1);border-radius:var(--radius);padding:28px}
+.learning-item{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--text2);margin-bottom:10px;font-family:var(--font-sub)}
+.learning-item:last-child{margin-bottom:0}
+
+/* ===== WHY HIRE ME — ORDER OF THE PHOENIX ===== */
+#why-me{padding:120px 0}
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.bento-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.bento-card:hover{background:var(--bg3);border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--glow)}
+.bento-card.wide{grid-column:span 2}
+.bento-icon{font-size:1.8rem;margin-bottom:16px;display:block}
+.bento-title{font-family:var(--font-display);font-size:1rem;font-weight:700;letter-spacing:.03em;margin-bottom:8px;color:var(--text)}
+.bento-sub{font-size:.78rem;color:var(--gold);font-family:var(--font-mono);margin-bottom:10px;letter-spacing:.06em}
+.bento-desc{font-size:.85rem;color:var(--text2);line-height:1.7;font-family:var(--font-sub)}
+.bento-big{font-family:var(--font-display);font-size:4rem;font-weight:900;letter-spacing:-.04em;background:linear-gradient(135deg,var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(212,175,55,.2))}
+
+/* ===== CONTACT — OWL POST ===== */
+#contact{padding:120px 0 160px}
+.contact-card{background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(124,58,237,.04));border:1px solid rgba(212,175,55,.14);border-radius:calc(var(--radius)*1.5);padding:72px;text-align:center;position:relative;overflow:hidden}
+.contact-card::before{content:'';position:absolute;top:-50%;left:-20%;width:60%;height:100%;background:radial-gradient(ellipse,rgba(212,175,55,.06) 0%,transparent 70%);pointer-events:none}
+.contact-card::after{content:'';position:absolute;bottom:-50%;right:-20%;width:60%;height:100%;background:radial-gradient(ellipse,rgba(124,58,237,.05) 0%,transparent 70%);pointer-events:none}
+.contact-owl{font-size:4rem;margin-bottom:24px;animation:owl-fly 3s ease-in-out infinite;display:block}
+@keyframes owl-fly{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+.contact-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:16px;color:var(--text);position:relative;z-index:1}
+.contact-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.contact-sub{color:var(--text2);font-size:1rem;max-width:460px;margin:0 auto 52px;line-height:1.8;font-family:var(--font-sub);font-style:italic;position:relative;z-index:1}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:40px;position:relative;z-index:1}
+.contact-link{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:14px 28px;border-radius:50px;text-decoration:none;font-size:.88rem;font-weight:600;transition:all .25s;font-family:var(--font-display);letter-spacing:.04em}
+.contact-link:hover{background:var(--surface2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--glow)}
+.contact-email{font-family:var(--font-mono);font-size:.82rem;color:var(--text3);position:relative;z-index:1}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
+.footer-text{font-size:.78rem;color:var(--text3);font-family:var(--font-mono);letter-spacing:.06em}
+.footer-text span{color:var(--gold);opacity:.6}
+
+/* ===== MODAL — SPELL SCROLL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:5000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);max-width:700px;width:100%;max-height:84vh;overflow-y:auto;padding:52px;position:relative;box-shadow:0 0 60px rgba(212,175,55,.15)}
+.modal-close{position:absolute;top:20px;right:20px;background:var(--surface);border:1px solid var(--border);color:var(--text2);cursor:pointer;width:36px;height:36px;border-radius:50%;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s;font-family:var(--font-mono)}
+.modal-close:hover{background:var(--surface2);color:var(--text);border-color:var(--border2)}
+.modal h2{font-family:var(--font-display);font-size:1.9rem;font-weight:800;letter-spacing:.01em;margin-bottom:8px;color:var(--text)}
+.modal .modal-spell{font-family:var(--font-mono);font-size:.75rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+.modal p{color:var(--text2);line-height:1.85;margin-bottom:16px;font-size:.95rem;font-family:var(--font-sub)}
+.modal ul{color:var(--text2);padding-left:20px;margin-bottom:16px}
+.modal li{margin-bottom:8px;font-size:.93rem;line-height:1.7;font-family:var(--font-sub)}
+.modal-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+.modal-section h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:.04em}
+.modal-metric{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-sub)}
+.modal-metric:last-child{border-bottom:none}
+.modal-metric-label{font-size:.88rem;color:var(--text2)}
+.modal-metric-value{font-size:.9rem;color:var(--gold);font-family:var(--font-mono);font-weight:600}
+
+/* ===== EASTER EGG ===== */
+#easter-egg{position:fixed;bottom:-120px;right:32px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:16px 22px;font-family:var(--font-mono);font-size:.8rem;color:var(--gold);z-index:4000;transition:bottom .5s cubic-bezier(.16,1,.3,1);max-width:280px;box-shadow:var(--glow)}
+#easter-egg.show{bottom:32px}
+
+/* ===== PARTICLES ===== */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;animation:float-particle var(--dur,20s) var(--delay,0s) infinite linear}
+@keyframes float-particle{0%{transform:translateY(100vh) translateX(0);opacity:0}10%{opacity:.7}90%{opacity:.2}100%{transform:translateY(-20px) translateX(var(--drift,30px));opacity:0}}
+
+/* ===== FADE-UP ANIMATION ===== */
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity .75s,transform .75s}
+.fade-up.show{opacity:1;transform:translateY(0)}
+
+/* ===== DIVIDER ===== */
+.magic-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--gold),var(--border),transparent);margin:0}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .container{padding:0 20px}
+  nav{width:calc(100% - 28px);border-radius:16px;flex-wrap:wrap;justify-content:center;gap:6px}
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured,.project-card.full-width,.coming-soon-card{grid-column:span 1;grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+  .bento-grid{grid-template-columns:1fr 1fr}
+  .bento-card.wide{grid-column:span 2}
+  .contact-card{padding:40px 24px}
+  .hero-stats{gap:20px}
+  .modal{padding:28px 20px}
+}
+@media(max-width:480px){
+  .bento-grid{grid-template-columns:1fr}
+  .bento-card.wide{grid-column:span 1}
+  .about-skills-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADER — THE SORTING HAT ===== -->
+<div id="loader">
+  <div class="loader-hat">🎩</div>
+  <div class="loader-title">Entering the Wizarding World of Products</div>
+  <div class="loader-spell" id="loader-spell">Lumos...</div>
+  <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div id="progress"></div>
+
+<!-- MAGIC CURSOR -->
+<div id="magic-cursor"><div id="magic-cursor-dot"></div><div id="magic-cursor-ring"></div></div>
+
+<!-- STARFIELD -->
+<div id="starfield"></div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- EASTER EGG -->
+<div id="easter-egg">⚡ Mischief Managed — you've unlocked the Room of Requirement!</div>
+
+<!-- ===== NAVIGATION — MARAUDER'S MAP ===== -->
+<nav id="navbar">
+  <div class="nav-logo"><span>⚡</span> KG</div>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">Origins</a>
+    <a href="#projects" class="nav-link">Spellbook</a>
+    <a href="#case-studies" class="nav-link">Prophet</a>
+    <a href="#experience" class="nav-link">Chronicle</a>
+    <a href="#contact" class="nav-link">Owl Post</a>
+  </div>
+  <div class="nav-actions">
+    <a href="mailto:kgarg_be23@thapar.edu" class="nav-hire" id="hire-btn">Send Owl ✉</a>
+  </div>
+</nav>
+
+<!-- ===== HERO — PLATFORM 9¾ ===== -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="hero-gradient2"></div>
+    <div class="hero-gradient3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <!-- Floating spell orbs -->
+  <div class="spell-orb" style="width:120px;height:120px;top:15%;right:12%;background:radial-gradient(circle,rgba(212,175,55,.08) 0%,transparent 70%);--odur:7s;--ox:15px;--oy:-20px"></div>
+  <div class="spell-orb" style="width:80px;height:80px;top:60%;right:5%;background:radial-gradient(circle,rgba(126,240,212,.06) 0%,transparent 70%);--odur:5s;--ox:-10px;--oy:-30px"></div>
+  <div class="spell-orb" style="width:60px;height:60px;top:25%;right:35%;background:radial-gradient(circle,rgba(168,85,247,.06) 0%,transparent 70%);--odur:8s;--ox:20px;--oy:15px"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        ✦ Open to PM · APM · Founder's Office roles
+      </div>
+      <h1 class="hero-headline" id="hero-headline">
+        <span class="line"><span class="word" style="--delay:.1s">Where</span> <span class="word gold-word" style="--delay:.18s">code</span> <span class="word" style="--delay:.26s">meets</span></span>
+        <span class="line"><span class="word gold-word" style="--delay:.34s">magic.</span></span>
+        <span class="line" style="margin-top:4px"><span class="word" style="font-size:.65em;--delay:.44s">Building</span> <span class="word cyan-word" style="font-size:.65em;--delay:.52s">products</span> <span class="word" style="font-size:.65em;--delay:.6s">that enchant.</span></span>
+      </h1>
+      <p class="hero-sub" id="hero-sub">Computer Engineering student at <strong>Thapar Institute</strong>, Co-Founder & CPO of <strong>Rabonna</strong>. I turn user friction into enchanted products at the intersection of AI, UX, and growth — 9 products shipped, real metrics moved.</p>
+      <div class="hero-ctas" id="hero-ctas">
+        <a href="#projects" class="btn-primary">📖 Explore the Spellbook ↓</a>
+        <a href="#" class="btn-secondary" onclick="downloadResume(event)">📜 The Grimoire (Resume)</a>
+        <a href="https://github.com/kg3478/" target="_blank" class="btn-ghost">🦉 GitHub Scroll ↗</a>
+      </div>
+      <div class="hero-stats" id="hero-stats">
+        <div>
+          <div class="stat-num" data-count="9">0</div>
+          <div class="stat-label">spells cast</div>
+        </div>
+        <div>
+          <div class="stat-num" data-count="125">0</div>
+          <div class="stat-label">× throughput gain</div>
+        </div>
+        <div>
+          <div class="stat-num" data-count="91">0</div>
+          <div class="stat-label">% churn recall</div>
+        </div>
+        <div>
+          <div class="stat-num" data-count="45" data-suffix="min→4min">45</div>
+          <div class="stat-label">insight time slashed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="magic-divider"></div>
+
+<!-- ===== ABOUT — THE PARCHMENT LETTER ===== -->
+<section id="about">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">// The Wizard's Origins</div>
+      <h2 class="section-title">Builder. Thinker.<br>Execution Machine.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="parchment-card" style="margin-bottom:24px">
+          <div class="wax-seal">⚡</div>
+          <p>I'm not just a coder who learned product. I'm someone who genuinely <strong>obsesses over broken systems</strong> — why does this flow confuse users? Why does this product have all the features but none of the retention? That question drives everything I build.</p>
+        </div>
+        <p>At Thapar, I realized early that <strong>code alone doesn't create value</strong>. A product lives or dies on the quality of decisions made before a single line is written. So I've spent the last two years studying user psychology, GTM strategy, and AI systems simultaneously.</p>
+        <p>As Co-Founder & CPO of <strong>Rabonna</strong>, I ran product from zero — customer discovery, B2B onboarding, marketplace growth ops. I've felt the real cost of a bad product decision. That sharpens judgment nothing else can.</p>
+        <p>I think in <strong>systems, not features</strong>. I move fast without breaking user trust. I want to work where ownership is real and the problem is worth solving.</p>
+      </div>
+      <div class="about-skills-grid fade-up">
+        <div class="skill-chip">
+          <div class="skill-chip-icon">🔮</div>
+          <div class="skill-chip-label">Divination & Roadmaps</div>
+          <div class="skill-chip-sub">OKRs, roadmaps, prioritization</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-chip-icon">🤖</div>
+          <div class="skill-chip-label">Spell Engineering (AI)</div>
+          <div class="skill-chip-sub">LLMs, XGBoost, FastAPI</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-chip-icon">🔭</div>
+          <div class="skill-chip-label">Arithmancy (Data)</div>
+          <div class="skill-chip-sub">SQL, DuckDB, SHAP, metrics</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-chip-icon">⚡</div>
+          <div class="skill-chip-label">Apparition (GTM)</div>
+          <div class="skill-chip-sub">B2B, marketplace, funnels</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-chip-icon">👁️</div>
+          <div class="skill-chip-label">Legilimency (UX)</div>
+          <div class="skill-chip-sub">User interviews, teardowns</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-chip-icon">🔥</div>
+          <div class="skill-chip-label">Transfiguration (Dev)</div>
+          <div class="skill-chip-sub">Next.js, React, Python</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="magic-divider"></div>
+
+<!-- ===== PROJECTS — THE SPELLBOOK ===== -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header fade-up">
+      <div>
+        <div class="section-label">// The Grimoire</div>
+        <h2 class="section-title">Spells I've Cast</h2>
+      </div>
+      <p class="section-sub" style="max-width:300px;text-align:right;font-family:'Crimson Text',serif;font-style:italic">Each one started with a real problem. Each one shipped.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- ===== 1. BAKEFLOW — FEATURED ===== -->
+      <div class="project-card featured fade-up" style="--card-glow:rgba(212,175,55,.1)" id="card-bakeflow">
+        <div>
+          <div class="spell-badge featured">⭐ Featured · #1 Priority</div>
+          <div class="spell-name-small">✦ Incendio — The Bakery Empire Charm</div>
+          <div class="card-title">BakeFlow ERP</div>
+          <div class="card-role">// Full-Stack Multi-Tenant SaaS · India's Bakery ERP</div>
+          <div class="card-problem">Indian bakeries — especially small to medium — face severe operational inefficiencies: manual inventory leads to stockouts, paper bills mean no GST compliance, and high-cost traditional ERPs aren't built for them. BakeFlow solves all of this in a single cloud-hosted SaaS: inventory, AI invoice scanning, GST billing, WhatsApp delivery, CRM, and a public REST API.</div>
+          <div class="card-impact">⚡ 16 modules · Multi-tenant · AI invoice scanning · GST compliant</div>
+          <div class="card-stack">
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">Express.js</span>
+            <span class="stack-tag">Prisma 7</span>
+            <span class="stack-tag">PostgreSQL (Neon)</span>
+            <span class="stack-tag">Gemini Vision AI</span>
+            <span class="stack-tag">Twilio WhatsApp</span>
+            <span class="stack-tag">Google OAuth</span>
+            <span class="stack-tag">Render</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://bakeflow-6dpf.onrender.com" target="_blank" class="btn-card btn-live">🔥 Cast Demo <span class="arrow-icon">↗</span></a>
+            <button class="btn-card btn-case" onclick="openModal('bakeflow')">📜 Read Prophecy</button>
+          </div>
+        </div>
+        <div class="card-visual">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(139,26,26,.06));pointer-events:none"></div>
+          <div class="card-visual-inner">
+            <div style="font-size:3.5rem;margin-bottom:12px">🥐</div>
+            <div class="card-visual-big">SaaS</div>
+            <div class="card-visual-label">Production-Ready ERP</div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap">
+              <span style="font-size:.7rem;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);color:var(--gold2);padding:4px 10px;border-radius:20px;font-family:var(--font-mono)">AI Vision</span>
+              <span style="font-size:.7rem;background:rgba(126,240,212,.08);border:1px solid rgba(126,240,212,.15);color:var(--cyan);padding:4px 10px;border-radius:20px;font-family:var(--font-mono)">WhatsApp</span>
+              <span style="font-size:.7rem;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.15);color:var(--purple2);padding:4px 10px;border-radius:20px;font-family:var(--font-mono)">GST</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 2. PULSEBOARD ===== -->
+      <div class="project-card featured fade-up" style="--card-glow:rgba(126,240,212,.08)" id="card-pulseboard">
+        <div>
+          <div class="spell-badge">✨ Hybrid AI · Analytics</div>
+          <div class="spell-name-small">✦ Lumos — The Data Illumination Spell</div>
+          <div class="card-title">PulseBoard</div>
+          <div class="card-role">// AI-Powered Data Analysis Platform</div>
+          <div class="card-problem">Extracting insights from data is still slow, technical, and fragmented across tools. PulseBoard enables users to analyze structured and messy datasets using natural language by combining a deterministic engine with intelligent LLM fallback. What used to take 45 minutes now takes 4.</div>
+          <div class="card-impact">⚡ Time-to-insight: 45 min → 4 min</div>
+          <div class="card-stack">
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">DuckDB</span>
+            <span class="stack-tag">Hybrid AI Engine</span>
+            <span class="stack-tag">NLP</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://pulse-board-ai-analytics.vercel.app/" target="_blank" class="btn-card btn-live">✨ Cast Demo <span class="arrow-icon">↗</span></a>
+            <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+            <button class="btn-card btn-case" onclick="openModal('pulseboard')">📜 Read Prophecy</button>
+          </div>
+        </div>
+        <div class="card-visual">
+          <div class="card-visual-inner">
+            <div class="card-visual-big">45min</div>
+            <div class="card-visual-label" style="margin:8px 0">→ transformed to</div>
+            <div class="card-visual-sub">4 min</div>
+            <div class="card-visual-label" style="margin-top:8px">time to insight</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 3. CHURNSENSE ===== -->
+      <div class="project-card fade-up" style="--card-glow:rgba(139,26,26,.1)">
+        <div class="spell-badge ml">🔮 ML · Retention</div>
+        <div class="spell-name-small">✦ Revelio — The Churn Revelation Charm</div>
+        <div class="card-title">ChurnSense</div>
+        <div class="card-role">// Predictive Churn Engine</div>
+        <div class="card-problem">SaaS companies lose revenue silently. ChurnSense detects at-risk users early with 91% recall, giving CS teams time to intervene before churn happens. SHAP explanations make every prediction auditable.</div>
+        <div class="card-impact">⚡ 91% recall on early churn detection</div>
+        <div class="card-stack">
+          <span class="stack-tag">XGBoost</span>
+          <span class="stack-tag">SHAP</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">React</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://churn-sense.vercel.app/" target="_blank" class="btn-card btn-live">🔮 Cast Demo <span class="arrow-icon">↗</span></a>
+          <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+          <button class="btn-card btn-case" onclick="openModal('churnsense')">📜 Read Prophecy</button>
+        </div>
+      </div>
+
+      <!-- ===== 4. SENTINELRISK ===== -->
+      <div class="project-card fade-up" style="--card-glow:rgba(126,240,212,.06)">
+        <div class="spell-badge" style="background:rgba(126,240,212,.08);border-color:rgba(126,240,212,.2);color:var(--cyan)">🛡️ FinTech · Fraud AI</div>
+        <div class="spell-name-small">✦ Protego Maxima — The Transaction Shield</div>
+        <div class="card-title">SentinelRisk</div>
+        <div class="card-role">// Transaction Risk Decision Intelligence</div>
+        <div class="card-problem">$32B annual card fraud + false declines destroying checkout conversion. SentinelRisk scores transactions in sub-20ms, captures 91.2% of fraud with just 0.84% FPR. SHAP explainability + human-in-loop audit trail. Net savings: +€142,500 on test split.</div>
+        <div class="card-impact">⚡ 91.2% fraud capture · 14.5ms latency · +€142k saved</div>
+        <div class="card-stack">
+          <span class="stack-tag">XGBoost</span>
+          <span class="stack-tag">SHAP</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">PSI Monitoring</span>
+          <span class="stack-tag">PostgreSQL</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://sentinelrisk-frontend.onrender.com" target="_blank" class="btn-card btn-live">🛡️ Cast Demo <span class="arrow-icon">↗</span></a>
+          <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+          <button class="btn-card btn-case" onclick="openModal('sentinelrisk')">📜 Read Prophecy</button>
+        </div>
+      </div>
+
+      <!-- ===== 5. LASTMILE ===== -->
+      <div class="project-card fade-up" style="--card-glow:rgba(212,175,55,.07)">
+        <div class="spell-badge" style="background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.18);color:var(--gold2)">📦 Logistics · OR-Tools</div>
+        <div class="spell-name-small">✦ Accio — The Delivery Summoning Charm</div>
+        <div class="card-title">LastMile Delivery Intelligence</div>
+        <div class="card-role">// Operational Decision Intelligence Platform</div>
+        <div class="card-problem">Last-mile = 53% of logistics costs. Static dispatch causes late deliveries & unmonitored driver deviations. Real-time ML delay prediction, Google OR-Tools VRP optimization, and difficulty-adjusted driver scoring.</div>
+        <div class="card-impact">⚡ 5–18% route mileage reduction · 20–45% fewer late deliveries</div>
+        <div class="card-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Google OR-Tools</span>
+          <span class="stack-tag">scikit-learn</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">PostgreSQL</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://lastmile-frontend-h4pz.onrender.com" target="_blank" class="btn-card btn-live">📦 Cast Demo <span class="arrow-icon">↗</span></a>
+          <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+          <button class="btn-card btn-case" onclick="openModal('lastmile')">📜 Read Prophecy</button>
+        </div>
+      </div>
+
+      <!-- ===== 6. CLOUDSPEND ===== -->
+      <div class="project-card fade-up" style="--card-glow:rgba(168,85,247,.07)">
+        <div class="spell-badge" style="background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.18);color:var(--purple2)">💰 FinOps · 7-Agent AI</div>
+        <div class="spell-name-small">✦ Finite Incantatem — The FinOps Clarity Charm</div>
+        <div class="card-title">CloudSpend Intelligence</div>
+        <div class="card-role">// FinOps Decision Intelligence Platform</div>
+        <div class="card-problem">Cloud cost waste is invisible to most orgs. CloudSpend runs a 7-agent evidence pipeline (OBSERVE→EXPLAIN→DETECT→DIAGNOSE→OPTIMIZE→ESTIMATE→VALIDATE→DECIDE) to deliver auditable cost optimization recommendations, FOCUS-compliant.</div>
+        <div class="card-impact">⚡ 7-agent AI pipeline · FOCUS compliant · Auditable intelligence</div>
+        <div class="card-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Next.js 14</span>
+          <span class="stack-tag">DuckDB</span>
+          <span class="stack-tag">LightGBM</span>
+          <span class="stack-tag">Gemini AI</span>
+          <span class="stack-tag">PostgreSQL</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://cloudspend-intelligence-ruby.vercel.app/" target="_blank" class="btn-card btn-live">💰 Cast Demo <span class="arrow-icon">↗</span></a>
+          <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+          <button class="btn-card btn-case" onclick="openModal('cloudspend')">📜 Read Prophecy</button>
+        </div>
+      </div>
+
+      <!-- ===== 7. FOCUSIQ ===== -->
+      <div class="project-card fade-up" style="--card-glow:rgba(212,175,55,.06)">
+        <div class="spell-badge" style="background:rgba(212,175,55,.07);border-color:rgba(212,175,55,.15);color:var(--amber)">📚 EdTech · Spaced Rep</div>
+        <div class="spell-name-small">✦ Alohomora — The Study Unlocking Spell</div>
+        <div class="card-title">FocusIQ</div>
+        <div class="card-role">// AI-Powered Study Planner</div>
+        <div class="card-problem">Students waste study time on the wrong topics. FocusIQ uses AI to analyze syllabi and performance patterns, then builds adaptive priority-based study plans with SM-2 spaced repetition and sentiment detection in notes.</div>
+        <div class="card-impact">⚡ AI adaptive study prioritization · SM-2 algorithm</div>
+        <div class="card-stack">
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">Google OAuth</span>
+          <span class="stack-tag">NLP</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://focus-iq-two.vercel.app/" target="_blank" class="btn-card btn-live">📚 Cast Demo <span class="arrow-icon">↗</span></a>
+          <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+        </div>
+      </div>
+
+      <!-- ===== 8. DATAFLUX ===== -->
+      <div class="project-card fade-up" style="--card-glow:rgba(126,240,212,.05)">
+        <div class="spell-badge" style="background:rgba(126,240,212,.06);border-color:rgba(126,240,212,.14);color:var(--cyan)">⚙️ Infrastructure · ETL</div>
+        <div class="spell-name-small">✦ Mobilicorpus — The Pipeline Conjuration</div>
+        <div class="card-title">DataFlux ETL Benchmark</div>
+        <div class="card-role">// Data Pipeline Performance Engineering</div>
+        <div class="card-problem">Legacy ETL pipelines were the hidden bottleneck in analytics stacks. DataFlux benchmarks 3 architectures across 500k records. The Multithreaded Producer-Consumer Pipeline (Case 3) achieves 125× speedup over sequential baseline with bounded 282MB RAM.</div>
+        <div class="card-impact">⚡ 125× throughput · 500k records · 282MB bounded RAM</div>
+        <div class="card-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Plotly</span>
+          <span class="stack-tag">Multithreading</span>
+        </div>
+        <div class="card-actions">
+          <button class="btn-card btn-live" onclick="openModal('dataflux')">⚙️ Architecture Walkthrough</button>
+          <a href="https://github.com/kg3478/" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+        </div>
+      </div>
+
+      <!-- ===== 9. SENTRIX — COMING SOON ===== -->
+      <div class="coming-soon-card fade-up">
+        <div style="position:relative;z-index:1">
+          <div class="coming-soon-badge">🔮 Enchanting Now — Not Yet Deployed</div>
+          <div class="sentrix-title">SENTRIX</div>
+          <p class="sentrix-sub">Morsmordre — The All-Seeing Eye. An edge-first multimodal physical security platform fusing YOLOv8 object detection, 16kHz acoustic anomaly detection, dual-mode face recognition, and trajectory analysis into a unified 5-level Threat Confidence Index (TCI). AES-256-GCM evidence vault. Twilio emergency alerts.</p>
+          <div class="sentrix-actions">
+            <button class="btn-card btn-live" onclick="openModal('sentrix')" style="padding:12px 24px;font-size:.88rem">🔒 Explore Architecture</button>
+            <button class="btn-card btn-case" style="padding:12px 24px;font-size:.88rem;cursor:not-allowed;opacity:.6">🦉 Launching Soon</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 10. RABONNA — THE STARTUP FEATURED ===== -->
+      <div class="project-card featured fade-up" style="--card-glow:rgba(126,240,212,.08);margin-top:8px" id="card-rabonna">
+        <div>
+          <div class="spell-badge startup">🏟️ Startup — Co-Founder & CPO</div>
+          <div class="spell-name-small">✦ Room of Requirement — Built When Needed Most</div>
+          <div class="card-title">Rabonna</div>
+          <div class="card-role">// Sports Venue Booking Marketplace · India</div>
+          <div class="card-problem">Sports venue booking in India was entirely manual — calls, WhatsApp, zero discovery. No platform existed for players to find and book venues, or for venue owners to manage availability and grow. Rabonna built the marketplace layer: venue discovery, real-time availability, B2B onboarding, and the GTM flywheel from zero.</div>
+          <div class="card-impact">⚡ 0→1 Marketplace · B2B GTM · MOU signed · Grant recipients</div>
+          <div class="card-stack">
+            <span class="stack-tag">Product Strategy</span>
+            <span class="stack-tag">GTM</span>
+            <span class="stack-tag">B2B Sales</span>
+            <span class="stack-tag">Growth Ops</span>
+            <span class="stack-tag">Marketplace</span>
+            <span class="stack-tag">0→1</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-card btn-live" onclick="openModal('rabonna')">🏟️ Startup Case Study</button>
+          </div>
+        </div>
+        <div class="card-visual">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(126,240,212,.04),rgba(52,211,153,.04));pointer-events:none"></div>
+          <div class="card-visual-inner">
+            <div style="font-size:2.5rem;margin-bottom:12px">🏟️</div>
+            <div class="card-visual-label" style="margin-bottom:16px;font-size:.72rem">CPO Responsibilities</div>
+            <div class="cpo-panel">
+              <div class="cpo-item"><span class="cpo-check">✦</span>Customer discovery & user interviews</div>
+              <div class="cpo-item"><span class="cpo-check">✦</span>B2B venue onboarding pipeline</div>
+              <div class="cpo-item"><span class="cpo-check">✦</span>Product roadmap & prioritization</div>
+              <div class="cpo-item"><span class="cpo-check">✦</span>GTM strategy & growth loops</div>
+              <div class="cpo-item"><span class="cpo-check">✦</span>Marketplace metrics & retention</div>
+              <div class="cpo-item"><span class="cpo-check">✦</span>MOU signed · Grant received</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="magic-divider"></div>
+
+<!-- ===== CASE STUDIES — THE DAILY PROPHET ===== -->
+<section id="case-studies">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">// The Daily Prophet</div>
+      <div class="prophet-header">
+        <div class="prophet-masthead">⚡ The Daily Prophet</div>
+        <div class="prophet-sub">Critical Product Analysis — Issue XVII · By Kartik Garg</div>
+      </div>
+      <p class="section-sub">I tear down products to understand what they got right, what they got wrong, and what I'd enchant differently.</p>
+    </div>
+    <div class="case-grid">
+      <div class="case-card fade-up">
+        <div class="case-company">PERPLEXITY AI — The Citation Trust Hex</div>
+        <div class="case-title">When "I Trust This" Becomes the Product</div>
+        <div class="case-insight">Perplexity is the most interesting AI product of 2024 — but it has a trust hex nobody's breaking. It cites sources, yet 60% of users never click them. The real issue: the UI treats citations as footnotes, not confidence signals. I'd redesign the answer card to show source credibility inline, turning "trust me" into "here's why you can trust this." The hex isn't in the model — it's in the design.</div>
+        <div class="case-tags"><span class="case-tag">AI Trust</span><span class="case-tag">Search UX</span><span class="case-tag">Hallucination Risk</span></div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-company">NOTION AI — The Co-pilot Positioning Curse</div>
+        <div class="case-title">Why a $10 Add-On Feels Like a Detention</div>
+        <div class="case-insight">Notion AI is a $10/month add-on sitting inside a tool people already pay for — and it shows. Usage drops after week 2 because AI is a feature, not a workflow. The fix isn't better prompts — it's proactive AI that surfaces suggestions without being asked. Think: "You have 3 meeting notes with no action items. Want me to extract them?" That's a habit-forming product, not a chatbox. The curse is reactivity.</div>
+        <div class="case-tags"><span class="case-tag">AI Product</span><span class="case-tag">Habit Design</span><span class="case-tag">Retention</span></div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-company">LINKEDIN — The Enchanted Reply Trap</div>
+        <div class="case-title">When AI Suggestions Make You Feel Like a Bot</div>
+        <div class="case-insight">LinkedIn's AI reply suggestions are generic enough to be useless and specific enough to feel creepy. The product problem: it optimizes for engagement, not authentic connection. The fix isn't better prompts — it's rethinking when AI should suggest vs. stay silent. The enchantment backfired: it made the platform feel less human, not more useful.</div>
+        <div class="case-tags"><span class="case-tag">AI Product</span><span class="case-tag">Social Trust</span><span class="case-tag">Engagement</span></div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-company">YOUTUBE MUSIC — The Silencing Charm on Discovery</div>
+        <div class="case-title">Best Catalogue, Worst Discovery — A Contradiction</div>
+        <div class="case-insight">YouTube Music has the best catalogue and the worst discovery. The recommendation engine pushes familiar artists 80% of the time — killing serendipity. I'd redesign the home tab with a "Discover" mode that surfaces genre-adjacent artists, not just more of what you already play. The Silencing Charm was cast on the very thing that makes music magical: surprise.</div>
+        <div class="case-tags"><span class="case-tag">Recommendations</span><span class="case-tag">Discovery</span><span class="case-tag">Retention</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="magic-divider"></div>
+
+<!-- ===== EXPERIENCE — THE HOGWARTS SCROLL ===== -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">// The Chronicle</div>
+      <h2 class="section-title">Where I've Cast Spells</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:16px">
+      <div class="timeline fade-up">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 — Present</div>
+          <div class="timeline-title">Co-Founder & CPO</div>
+          <div class="timeline-org">Rabonna · Sports Venue Marketplace</div>
+          <div class="timeline-desc">Built the product strategy and GTM for a sports venue booking marketplace from zero. Led customer discovery, ran B2B venue onboarding, designed the core booking flow, signed MOUs, received grants, and managed growth metrics end-to-end. The Room of Requirement — built it when it was needed most.</div>
+          <div class="timeline-tags">
+            <span class="stack-tag">Product</span><span class="stack-tag">GTM</span><span class="stack-tag">B2B</span><span class="stack-tag">0→1</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--cyan);box-shadow:0 0 12px rgba(126,240,212,.6)"></div>
+          <div class="timeline-date">2023 — 2024</div>
+          <div class="timeline-title">Executive Board Member</div>
+          <div class="timeline-org">Innovation Council — Thapar Institute · Order of Phoenix Chapter</div>
+          <div class="timeline-desc">Managed innovation programs, mentored student builders, and helped run campus-wide hackathons and product challenges. Evaluated 50+ student startup pitches. Led the phoenix charge on product thinking across campus.</div>
+          <div class="timeline-tags">
+            <span class="stack-tag">Leadership</span><span class="stack-tag">Mentorship</span><span class="stack-tag">Events</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--purple2);box-shadow:0 0 12px rgba(168,85,247,.6)"></div>
+          <div class="timeline-date">2022 — 2023</div>
+          <div class="timeline-title">Core Member</div>
+          <div class="timeline-org">Entrepreneurship Development Cell — Thapar · Hogwarts Founder's Guild</div>
+          <div class="timeline-desc">Worked on startup ecosystem building, organized speaker sessions with founders, and collaborated on product workshops for the campus community. Helped plant the seeds of the entrepreneurship magic.</div>
+          <div class="timeline-tags">
+            <span class="stack-tag">Startups</span><span class="stack-tag">Community</span><span class="stack-tag">Strategy</span>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="padding-top:40px">
+        <div class="edu-card">
+          <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--text3);margin-bottom:14px;letter-spacing:.08em">✦ currently enrolled</div>
+          <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:6px;color:var(--text)">B.E. Computer Engineering</div>
+          <div style="color:var(--gold);font-size:.9rem;margin-bottom:18px;font-family:var(--font-sub);font-style:italic">Thapar Institute of Engineering & Technology</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:var(--surface);border-radius:8px;padding:14px;text-align:center;border:1px solid var(--border)">
+              <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold)">TIET</div>
+              <div style="font-size:.68rem;color:var(--text3);font-family:var(--font-mono);margin-top:4px">NAAC A+ Ranked</div>
+            </div>
+            <div style="background:var(--surface);border-radius:8px;padding:14px;text-align:center;border:1px solid var(--border)">
+              <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold)">2027</div>
+              <div style="font-size:.68rem;color:var(--text3);font-family:var(--font-mono);margin-top:4px">Graduation</div>
+            </div>
+          </div>
+        </div>
+        <div class="learning-card">
+          <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--gold);margin-bottom:14px;letter-spacing:.08em">✦ current charms coursework</div>
+          <div class="learning-item"><span style="color:var(--gold)">→</span>AI agent frameworks & LLM product patterns</div>
+          <div class="learning-item"><span style="color:var(--cyan)">→</span>Growth loops & PLG (Product-Led Growth)</div>
+          <div class="learning-item"><span style="color:var(--purple2)">→</span>Advanced SQL for product analytics</div>
+          <div class="learning-item"><span style="color:var(--amber)">→</span>YC reading list, PM frameworks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="magic-divider"></div>
+
+<!-- ===== WHY HIRE ME — ORDER OF THE PHOENIX ===== -->
+<section id="why-me">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;margin-bottom:48px">
+      <div class="section-label" style="justify-content:center;display:flex">// Order of the Phoenix</div>
+      <h2 class="section-title" style="text-align:center">Why This Wizard Stands Out</h2>
+      <p class="section-sub" style="text-align:center;margin:0 auto;font-style:italic">Six traits. One mission. Make products that matter.</p>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card wide fade-up" style="background:linear-gradient(135deg,rgba(212,175,55,.07),rgba(126,240,212,.04));border-color:rgba(212,175,55,.15)">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px">
+          <div>
+            <span class="bento-icon">👁️</span>
+            <div class="bento-title">Legilimens — User Obsessed</div>
+            <div class="bento-sub">reads minds to solve problems</div>
+            <div class="bento-desc" style="max-width:340px">I don't build features, I solve problems. Every decision starts with a user pain and ends with a measurable outcome. I've done real customer interviews, analysed drop-off, and redesigned flows from scratch. I read the room — and the user.</div>
+          </div>
+          <div class="bento-big">PM</div>
+        </div>
+      </div>
+      <div class="bento-card fade-up">
+        <span class="bento-icon">⚡</span>
+        <div class="bento-title">Expecto Patronum</div>
+        <div class="bento-sub">charges into the darkness</div>
+        <div class="bento-desc">I ship. Ideas without execution are dark arts. I've built 9 products while co-founding a startup. I move fast, iterate, and don't wait for perfect conditions.</div>
+      </div>
+      <div class="bento-card fade-up">
+        <span class="bento-icon">🤖</span>
+        <div class="bento-title">Spell Engineer — AI Native</div>
+        <div class="bento-sub">not just a buzzword</div>
+        <div class="bento-desc">I've built with LLMs, XGBoost, SHAP, vector embeddings, DuckDB, 7-agent pipelines. I understand the product tradeoffs of AI features — recall vs. latency vs. trust vs. cost.</div>
+      </div>
+      <div class="bento-card fade-up">
+        <span class="bento-icon">🌌</span>
+        <div class="bento-title">Trelawney's Sight</div>
+        <div class="bento-sub">sees second-order effects</div>
+        <div class="bento-desc">I see growth loops, retention mechanics, network effects — how decisions ripple through systems, not just the feature in front of me. Systems, not features.</div>
+      </div>
+      <div class="bento-card fade-up">
+        <span class="bento-icon">🏗️</span>
+        <div class="bento-title">Headmaster's Fire</div>
+        <div class="bento-sub">real ownership, not performance</div>
+        <div class="bento-desc">As CPO of a startup, I've felt the weight of real ownership — MOU signings, grant applications, B2B pipeline. Give me a north star metric, I'll find the path through the Forbidden Forest.</div>
+      </div>
+      <div class="bento-card fade-up">
+        <span class="bento-icon">📈</span>
+        <div class="bento-title">Gringotts Brain</div>
+        <div class="bento-sub">moves the numbers that matter</div>
+        <div class="bento-desc">Revenue, retention, CAC/LTV, B2B pipeline — product decisions need to move Gringotts-level numbers. I think in business outcomes, not just UX polish.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="magic-divider"></div>
+
+<!-- ===== CONTACT — OWL POST ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card fade-up">
+      <span class="contact-owl">🦉</span>
+      <h2 class="contact-title">Cast your Patronus.<br><span class="contact-gold">Let's build together.</span></h2>
+      <p class="contact-sub">I'm actively looking for PM internships, APM roles, and Founder's Office positions. If you're building something ambitious in the wizarding world of tech — send an owl.</p>
+      <div class="contact-links">
+        <a href="https://github.com/kg3478/" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub Scroll
+        </a>
+        <a href="https://github.com/kg3478/" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Owl
+        </a>
+        <a href="mailto:kgarg_be23@thapar.edu" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Owl Post (Email)
+        </a>
+      </div>
+      <div class="contact-email">✦ kgarg_be23@thapar.edu · The Owl Arrives Within 24 Hours ✦</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p class="footer-text">© 2025 Kartik Garg <span>⚡</span> Built with spells, not just code <span>✦</span> Thapar Institute of Engineering & Technology</p>
+    <p class="footer-text" style="margin-top:8px;font-style:italic;opacity:.5">"It is our choices that show what we truly are, far more than our abilities." — A. Dumbledore</p>
+  </div>
+</footer>
+
+<!-- ===== MODALS — SPELL SCROLLS ===== -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ===== SPELL TEXTS FOR LOADER =====
+const spells = ['Lumos...','Alohomora...','Accio Insights...','Expecto Portfolio...','Revelio...','Wingardium Leviosa...'];
+let spellIdx = 0;
+const spellEl = document.getElementById('loader-spell');
+
+// ===== LOADER =====
+const fill = document.getElementById('loader-fill');
+const loader = document.getElementById('loader');
+let pct = 0;
+const spellInterval = setInterval(() => {
+  spellEl.textContent = spells[spellIdx % spells.length];
+  spellIdx++;
+}, 400);
+const loadInterval = setInterval(() => {
+  pct += Math.random() * 18 + 5;
+  if (pct >= 100) {
+    pct = 100;
+    clearInterval(loadInterval);
+    clearInterval(spellInterval);
+    spellEl.textContent = 'Mischief Managed ✓';
+    setTimeout(() => { loader.classList.add('done'); startAnimations(); }, 400);
+  }
+  fill.style.width = pct + '%';
+}, 65);
+
+// ===== STARFIELD =====
+function createStarfield() {
+  const sf = document.getElementById('starfield');
+  // Stars
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${2+Math.random()*4}s;--delay:${Math.random()*-4}s`;
+    sf.appendChild(s);
+  }
+  // Shooting stars
+  for (let i = 0; i < 4; i++) {
+    const ss = document.createElement('div');
+    ss.className = 'shooting-star';
+    ss.style.cssText = `left:${Math.random()*60}%;top:${Math.random()*40}%;--sdur:${6+Math.random()*8}s;--sdelay:${Math.random()*-8}s;opacity:${.3+Math.random()*.5}`;
+    sf.appendChild(ss);
+  }
+}
+createStarfield();
+
+// ===== MAGIC CURSOR =====
+const cursor = document.getElementById('magic-cursor');
+let mouseX = 0, mouseY = 0;
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  // Spark trail
+  if (Math.random() > 0.75) createSpark(e.clientX, e.clientY);
+});
+function createSpark(x, y) {
+  const spark = document.createElement('div');
+  spark.className = 'spark-particle';
+  const colors = ['var(--gold)','var(--gold2)','var(--cyan)','var(--purple2)','#fff'];
+  const color = colors[Math.floor(Math.random()*colors.length)];
+  const dx = (Math.random()-0.5)*60;
+  const dy = -(Math.random()*50+10);
+  spark.style.cssText = `left:${x}px;top:${y}px;background:${color};--dx:${dx}px;--dy:${dy}px;--dur:${.4+Math.random()*.4}s;box-shadow:0 0 4px ${color}`;
+  document.body.appendChild(spark);
+  setTimeout(() => spark.remove(), 800);
+}
+// Click burst
+document.addEventListener('click', (e) => {
+  for (let i = 0; i < 8; i++) createSpark(e.clientX, e.clientY);
+});
+
+// ===== PARTICLES =====
+function createParticles() {
+  const cont = document.getElementById('particles');
+  for (let i = 0; i < 28; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const colors = ['var(--gold)','var(--gold2)','var(--cyan)','var(--purple2)','#fff'];
+    const color = colors[Math.floor(Math.random()*colors.length)];
+    p.style.cssText = `left:${Math.random()*100}%;--dur:${18+Math.random()*20}s;--delay:${Math.random()*-20}s;--drift:${(Math.random()-.5)*80}px;opacity:0;background:${color};width:${Math.random()>0.7?4:2}px;height:${Math.random()>0.7?4:2}px`;
+    cont.appendChild(p);
+  }
+}
+createParticles();
+
+// ===== SCROLL PROGRESS & NAV =====
+window.addEventListener('scroll', () => {
+  const s = window.scrollY, h = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (s / h * 100) + '%';
+  // Nav active
+  document.querySelectorAll('section[id]').forEach(sec => {
+    const top = sec.offsetTop - 100, bot = top + sec.offsetHeight;
+    if (s >= top && s < bot) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.nav-link[href="#${sec.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+  // Fade up
+  document.querySelectorAll('.fade-up').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('show');
+  });
+});
+
+// ===== CARD GLOW ON MOUSE MOVE =====
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    card.style.setProperty('--mx', x + '%');
+    card.style.setProperty('--my', y + '%');
+  });
+});
+
+// ===== COUNT UP =====
+function countUp(el, target, duration=1600) {
+  const suffix = el.dataset.suffix || '';
+  const start = performance.now();
+  const update = (time) => {
+    const progress = Math.min((time - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target) + (progress === 1 && suffix ? '' : '');
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+// ===== HERO ANIMATIONS =====
+function startAnimations() {
+  document.querySelectorAll('.hero-headline .word').forEach(w => w.classList.add('show'));
+  setTimeout(() => { document.getElementById('hero-sub').classList.add('show'); }, 600);
+  setTimeout(() => { document.getElementById('hero-ctas').classList.add('show'); }, 800);
+  setTimeout(() => {
+    const stats = document.getElementById('hero-stats');
+    stats.classList.add('show');
+    document.querySelectorAll('[data-count]').forEach(el => countUp(el, parseInt(el.dataset.count)));
+  }, 1100);
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('show');
+    });
+  }, 200);
+}
+
+// ===== RESUME DOWNLOAD =====
+function downloadResume(e) {
+  e.preventDefault();
+  const btn = e.currentTarget || e.target;
+  const orig = btn.textContent;
+  btn.textContent = '🪄 Accio Resume...';
+  btn.style.opacity = '.7';
+  setTimeout(() => { btn.textContent = orig; btn.style.opacity = '1'; }, 2000);
+}
+
+// ===== MODAL SYSTEM =====
+const modalData = {
+  bakeflow: {
+    title: '🔥 BakeFlow ERP',
+    spell: 'Incendio — The Bakery Empire Charm',
+    content: `
+      <p><strong>BakeFlow</strong> is a production-ready, multi-tenant SaaS ERP built specifically for Indian bakery businesses — covering the complete business lifecycle from raw material inventory to AI-powered automation.</p>
+      <div class="modal-section">
+        <h3>🎯 Problem Solved</h3>
+        <p>Indian bakeries faced severe operational inefficiencies: manual inventory causing stockouts, paper-based billing with no GST compliance, no CRM, and high-cost traditional ERPs not built for their domain.</p>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ Key Modules (16 total)</h3>
+        <ul>
+          <li>Inventory Management — Ingredients & Packaging with low-stock alerts</li>
+          <li>Product Catalog — auto-calculated cost, margin, and selling price</li>
+          <li>GST Invoicing — GST-compliant invoices with WhatsApp delivery via Twilio</li>
+          <li>AI Invoice Scanner — Gemini Vision extracts line items from supplier invoice photos</li>
+          <li>CRM — full customer history with self-healing stats</li>
+          <li>Team Management — RBAC, login session audit, password management</li>
+          <li>Platform Admin Console — manage all bakery tenants, approve/suspend</li>
+          <li>Public REST API + Embeddable Widget + HMAC Webhooks</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>🏆 Competitive Advantages</h3>
+        <ul>
+          <li>Architectural tenant isolation via Prisma query extension — cross-tenant leakage is architecturally impossible</li>
+          <li>AI-first: Gemini Vision eliminates manual data entry</li>
+          <li>WhatsApp-native: invoice delivery + OTP password reset</li>
+          <li>India-first: GST, INR pricing, +91 phone defaults, Indian ingredient catalog</li>
+          <li>Single-service deployment on Render — zero separate CDN</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Impact Metrics</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Business Modules</span><span class="modal-metric-value">16 complete modules</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Architecture</span><span class="modal-metric-value">Production-ready multi-tenant</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">AI Integration</span><span class="modal-metric-value">Gemini Vision + Twilio</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Stack</span><span class="modal-metric-value">Node.js · Prisma · Neon · Render</span></div>
+      </div>
+    `
+  },
+  pulseboard: {
+    title: '✨ PulseBoard',
+    spell: 'Lumos — The Data Illumination Spell',
+    content: `
+      <p><strong>PulseBoard</strong> enables users to analyze structured and messy datasets using natural language by combining a deterministic analytics engine with intelligent LLM fallback — cutting time-to-insight from 45 minutes to 4 minutes.</p>
+      <div class="modal-section">
+        <h3>🎯 Problem Solved</h3>
+        <p>Extracting insights from data is slow, technical, and fragmented. Most analysts spend 80% of time on data prep, 20% on insight. PulseBoard flips this ratio with a hybrid AI engine.</p>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ Architecture</h3>
+        <ul>
+          <li>Deterministic engine: SQL generation from natural language via DuckDB</li>
+          <li>LLM fallback: when queries are ambiguous or require reasoning</li>
+          <li>Hybrid routing: auto-selects best path per query type</li>
+          <li>FastAPI backend + React frontend</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Impact</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Time-to-insight</span><span class="modal-metric-value">45 min → 4 min</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Query Engine</span><span class="modal-metric-value">DuckDB columnar SQL</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">AI Fallback</span><span class="modal-metric-value">LLM-powered reasoning</span></div>
+      </div>
+    `
+  },
+  churnsense: {
+    title: '🔮 ChurnSense',
+    spell: 'Revelio — The Churn Revelation Charm',
+    content: `
+      <p><strong>ChurnSense</strong> is a predictive churn engine that detects at-risk users early with 91% recall, giving customer success teams time to intervene before revenue walks out the door.</p>
+      <div class="modal-section">
+        <h3>🎯 Problem Solved</h3>
+        <p>SaaS companies lose revenue silently. By the time churners are identified through lagging indicators, it's too late to intervene. ChurnSense uses leading behavioral signals.</p>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ Technical Approach</h3>
+        <ul>
+          <li>XGBoost gradient-boosted classifier trained on behavioral features</li>
+          <li>SHAP values for per-prediction explainability — no black box decisions</li>
+          <li>FastAPI serving sub-100ms predictions</li>
+          <li>React dashboard for CS team intervention workflow</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Model Performance</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Recall (Churn Detection)</span><span class="modal-metric-value">91%</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Explainability</span><span class="modal-metric-value">SHAP per-prediction</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Inference Latency</span><span class="modal-metric-value">< 100ms</span></div>
+      </div>
+    `
+  },
+  sentinelrisk: {
+    title: '🛡️ SentinelRisk',
+    spell: 'Protego Maxima — The Transaction Shield',
+    content: `
+      <p><strong>SentinelRisk</strong> bridges the gap between ML research and real-world payment operations — an end-to-end Transaction Risk Decision Intelligence Platform that eliminates false declines while capturing fraud.</p>
+      <div class="modal-section">
+        <h3>🎯 Problem Solved</h3>
+        <p>Global card fraud losses exceed $32B annually — but an equally large problem is false declines: legitimate customers blocked by overly aggressive fraud filters, causing churn and checkout abandonment.</p>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ Key Features</h3>
+        <ul>
+          <li>Sub-20ms scoring via calibrated gradient-boosted trees + deterministic rules</li>
+          <li>SHAP attribution vectors for every decision — full analyst explainability</li>
+          <li>Cost-Sensitive Threshold Simulator — what-if scenarios on 42,722 transactions</li>
+          <li>PSI drift monitoring — real-time model health governance</li>
+          <li>Human-in-loop case queue with immutable audit trail</li>
+          <li>Multi-tier decisioning: ALLOW · CHALLENGE · REVIEW · BLOCK</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Performance Metrics</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Fraud Capture Rate</span><span class="modal-metric-value">91.2%</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">False Positive Rate</span><span class="modal-metric-value">0.84%</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Authorization Latency</span><span class="modal-metric-value">14.5ms</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">PR-AUC</span><span class="modal-metric-value">0.8542</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Net Financial Savings</span><span class="modal-metric-value">+€142,500</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">PSI (Drift)</span><span class="modal-metric-value">0.0182 (Stable)</span></div>
+      </div>
+    `
+  },
+  lastmile: {
+    title: '📦 LastMile Delivery Intelligence',
+    spell: 'Accio — The Delivery Summoning Charm',
+    content: `
+      <p><strong>LastMile</strong> is an enterprise-grade operational decision-intelligence platform for e-commerce, on-demand courier, and logistics operators. Last-mile = 53% of logistics expenditure — this platform attacks it head-on.</p>
+      <div class="modal-section">
+        <h3>🎯 Core Problem</h3>
+        <ul>
+          <li>Static route plans obsolete within minutes due to traffic and deviations</li>
+          <li>Drivers routinely diverge from planned routes without accountability</li>
+          <li>Late deliveries discovered only after SLA breach — no proactive alerts</li>
+          <li>No scenario simulation for disruptions (breakdowns, closures)</li>
+          <li>Zero decision auditability in traditional dispatch consoles</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ System Core Loop</h3>
+        <p>OBSERVE → PREDICT → DIAGNOSE → OPTIMIZE → SIMULATE → DECIDE → LEARN</p>
+        <ul>
+          <li>Real-time ML delay risk forecasting (45–90 min before SLA breach)</li>
+          <li>Google OR-Tools mathematical VRP optimization</li>
+          <li>Kendall Tau sequence adherence & deviation analysis</li>
+          <li>Difficulty-adjusted driver performance scoring</li>
+          <li>Immutable decision audit trail with evidence logs</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Impact</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Route Mileage Reduction</span><span class="modal-metric-value">5–18%</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Late Delivery Reduction</span><span class="modal-metric-value">20–45%</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Alert Lead Time</span><span class="modal-metric-value">45–90 min before breach</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Decision Auditability</span><span class="modal-metric-value">100%</span></div>
+      </div>
+    `
+  },
+  cloudspend: {
+    title: '💰 CloudSpend Intelligence',
+    spell: 'Finite Incantatem — The FinOps Clarity Charm',
+    content: `
+      <p><strong>CloudSpend Intelligence</strong> is a production-grade FinOps decision-intelligence platform built on the FinOps Open Cost and Usage Specification (FOCUS). It combines deterministic analytics, statistical ML, and a 7-agent evidence pipeline.</p>
+      <div class="modal-section">
+        <h3>⚡ The 7-Agent Pipeline</h3>
+        <p>OBSERVE → EXPLAIN → DETECT → DIAGNOSE → OPTIMIZE → ESTIMATE → VALIDATE → DECIDE</p>
+        <ul>
+          <li>Anomaly detection agent (LightGBM + statistical models)</li>
+          <li>Forecasting agent (time-series with Statsmodels)</li>
+          <li>Optimization agent — rightsizing, commitment recommendations</li>
+          <li>LLM synthesis agent (Gemini API) — narrative explanations</li>
+          <li>All recommendations are auditable with evidence chains</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Tech Stack</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Frontend</span><span class="modal-metric-value">Next.js 14 + TypeScript</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Analytics Engine</span><span class="modal-metric-value">DuckDB columnar SQL</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">ML Stack</span><span class="modal-metric-value">LightGBM · SciPy · Statsmodels</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">LLM</span><span class="modal-metric-value">Google Gemini API</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Standard</span><span class="modal-metric-value">FOCUS FinOps Spec</span></div>
+      </div>
+    `
+  },
+  dataflux: {
+    title: '⚙️ DataFlux ETL Benchmark',
+    spell: 'Mobilicorpus — The Pipeline Conjuration',
+    content: `
+      <p><strong>DataFlux</strong> is an empirical systems engineering benchmark comparing three ETL architectures across 500,000+ records — with a decisive winner for production AI pipelines.</p>
+      <div class="modal-section">
+        <h3>⚡ Three Architectures Benchmarked</h3>
+        <ul>
+          <li><strong>Case 1 — Sequential:</strong> 231 rec/s · 36 min for 500k · CATASTROPHIC for prod</li>
+          <li><strong>Case 2 — Pandas Batch:</strong> ~72,100 rec/s · 7s · OOM risk at scale (836MB RAM)</li>
+          <li><strong>Case 3 — Multithreaded Pipeline:</strong> ~29,000 rec/s · bounded 282MB · PRODUCTION OPTIMAL</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>🏆 Why Case 3 Wins in Production</h3>
+        <p>Case 3 uses bounded queues (maxsize=20) and fixed-size chunking (5,000 records) to enforce strict back-pressure — delivering a 125× speedup over sequential baseline while maintaining a deterministic, capped memory footprint. In production AI pipelines with 10GB–100GB+ tables, Case 2 triggers OOM kills.</p>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Key Results</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Throughput Gain</span><span class="modal-metric-value">125× over baseline</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Records Benchmarked</span><span class="modal-metric-value">500,000</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Memory (Case 3)</span><span class="modal-metric-value">~282MB bounded</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Architecture</span><span class="modal-metric-value">Producer-Consumer + Back-pressure</span></div>
+      </div>
+    `
+  },
+  sentrix: {
+    title: '🔒 SENTRIX',
+    spell: 'Morsmordre — The All-Seeing Eye',
+    content: `
+      <p><strong>SENTRIX v2.0</strong> is an edge-first multimodal physical security and threat orchestration platform fusing computer vision, acoustic telemetry, face recognition, and trajectory analysis into a unified threat index.</p>
+      <div class="modal-section">
+        <h3>⚡ Sensor Fusion Architecture</h3>
+        <ul>
+          <li>YOLOv8 object detection + motion scoring (multi-camera)</li>
+          <li>16kHz audio anomaly detection</li>
+          <li>Dual-mode face recognition (128-d deep embeddings + 512-bin HSV color descriptors)</li>
+          <li>Trajectory behaviour analysis (velocity + aspect-ratio + loitering model)</li>
+          <li>Cloud threat intelligence via Roboflow (weapon/fire detection)</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>🧠 XGBoost Late-Fusion Model</h3>
+        <p>All sensor inputs are fused into a unified 5-level Threat Confidence Index (TCI ∈ [0.0, 1.0]) using an XGBoost late-fusion model with Exponential Moving Average (EMA) temporal smoothing — eliminating single-sensor false positives.</p>
+      </div>
+      <div class="modal-section">
+        <h3>🔐 Security & Response</h3>
+        <ul>
+          <li>AES-256-GCM encrypted evidence vault</li>
+          <li>HMAC session tokens for all API access</li>
+          <li>Twilio SMS + voice call emergency alerts</li>
+          <li>5-level TCI escalation policy matrix</li>
+          <li>FastAPI WebSocket real-time dashboard</li>
+        </ul>
+      </div>
+    `
+  },
+  rabonna: {
+    title: '🏟️ Rabonna',
+    spell: 'Room of Requirement — Built When Needed Most',
+    content: `
+      <p><strong>Rabonna</strong> is a sports venue booking marketplace for India — built from zero as Co-Founder & CPO. Sports venue booking in India was entirely manual: calls, WhatsApp groups, zero discovery. Rabonna built the marketplace layer.</p>
+      <div class="modal-section">
+        <h3>🎯 The Problem</h3>
+        <p>India has thousands of sports venues (football grounds, cricket nets, badminton courts, swimming pools) with no digital presence. Players couldn't discover venues; venues couldn't fill empty slots. The entire ecosystem ran on word-of-mouth and WhatsApp.</p>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ What I Built as CPO</h3>
+        <ul>
+          <li>Led customer discovery — 40+ venue owner interviews & player interviews</li>
+          <li>Designed the core booking flow (discovery → availability → booking → payment)</li>
+          <li>Built B2B venue onboarding pipeline — target acquisition & pitch decks</li>
+          <li>Defined product roadmap with prioritization framework</li>
+          <li>GTM strategy — city-by-city launch playbook, referral loops, venue partnerships</li>
+          <li>Signed MOUs with venue partners for exclusive listing agreements</li>
+          <li>Applied for and received startup grants</li>
+          <li>Marketplace metrics tracking — GMV, venue fill rate, booking retention</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>📊 Milestone Outcomes</h3>
+        <div class="modal-metric"><span class="modal-metric-label">Stage</span><span class="modal-metric-value">0→1 Marketplace Built</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">MOUs</span><span class="modal-metric-value">Venue partnerships signed</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Grants</span><span class="modal-metric-value">Startup grants received</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">User Research</span><span class="modal-metric-value">40+ interviews conducted</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Role</span><span class="modal-metric-value">Co-Founder & CPO · 2023–Present</span></div>
+      </div>
+      <div class="modal-section">
+        <h3>💡 Key Learnings</h3>
+        <p>Running product at a startup taught me things no textbook could: the cost of a wrong feature, the weight of a user commitment, the craft of saying no to preserve focus. The Room of Requirement appeared when I needed to learn what it truly means to build a product people depend on.</p>
+      </div>
+    `
+  }
+};
+
+function openModal(key) {
+  const data = modalData[key];
+  if (!data) return;
+  document.getElementById('modal-body').innerHTML = `
+    <h2>${data.title}</h2>
+    <div class="modal-spell">✦ ${data.spell}</div>
+    ${data.content}
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay') && !e.target.classList.contains('modal-close')) return;
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal({target:document.getElementById('modal-overlay')}); });
+
+// ===== KONAMI CODE — EASTER EGG =====
+let konamiSeq = [], konamiCode = [38,38,40,40,37,39,37,39,66,65];
+document.addEventListener('keydown', e => {
+  konamiSeq.push(e.keyCode);
+  konamiSeq = konamiSeq.slice(-10);
+  if (konamiSeq.join(',') === konamiCode.join(',')) {
+    const egg = document.getElementById('easter-egg');
+    egg.classList.add('show');
+    setTimeout(() => egg.classList.remove('show'), 4000);
+  }
+});
+
+// ===== ALOHOMORA EASTER EGG =====
+let typedWord = '';
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  typedWord += e.key.toLowerCase();
+  typedWord = typedWord.slice(-10);
+  if (typedWord.includes('alohomora')) {
+    typedWord = '';
+    const egg = document.getElementById('easter-egg');
+    egg.textContent = '🚪 Alohomora! The secrets are revealed... 9 spells cast, real magic made.';
+    egg.classList.add('show');
+    setTimeout(() => {
+      egg.classList.remove('show');
+      setTimeout(() => { egg.textContent = '⚡ Mischief Managed — you\'ve unlocked the Room of Requirement!'; }, 600);
+    }, 5000);
+  }
+});
+</script>
+</body>
+</html>

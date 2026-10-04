@@ -149,15 +149,49 @@ section{position:relative;z-index:1}
 .spell-orb{position:absolute;border-radius:50%;pointer-events:none;animation:orb-float var(--odur,6s) ease-in-out infinite alternate}
 @keyframes orb-float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(var(--ox,20px),var(--oy,-20px)) scale(1.05)}}
 
-/* ===== ABOUT — THE PARCHMENT LETTER ===== */
+/* ===== ABOUT — THE PARCHMENT LETTER & LIVING PORTRAIT ===== */
 #about{padding:120px 0}
-.parchment-card{background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(139,26,26,.04));border:1px solid var(--border);border-radius:var(--radius);padding:40px;position:relative;overflow:hidden}
+.hero-avatar{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold);box-shadow:0 0 8px rgba(212,175,55,.4)}
+.about-top-grid{display:grid;grid-template-columns:310px 1fr;gap:40px;align-items:start;margin-top:48px}
+.portrait-card{background:linear-gradient(145deg,rgba(26,20,48,.85),rgba(13,10,26,.95));border:1px solid rgba(212,175,55,.35);border-radius:18px;padding:16px;box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 25px rgba(212,175,55,.1);position:relative;overflow:hidden;transition:all .35s ease}
+.portrait-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.6);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 35px rgba(212,175,55,.25)}
+.portrait-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(212,175,55,.12),transparent 65%);pointer-events:none}
+.portrait-img-wrap{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,.25);background:#07050e}
+.portrait-img{width:100%;height:350px;object-fit:cover;object-position:center 15%;display:block;transition:transform .5s ease}
+.portrait-card:hover .portrait-img{transform:scale(1.02)}
+.portrait-badge-overlay{position:absolute;top:12px;right:12px;background:rgba(13,10,26,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(212,175,55,.35);border-radius:20px;padding:4px 10px;font-size:.68rem;font-family:var(--font-mono);color:var(--gold);display:flex;align-items:center;gap:5px}
+.portrait-details{padding:14px 4px 4px;text-align:center}
+.portrait-name{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--gold);letter-spacing:.03em;margin-bottom:3px}
+.portrait-title{font-size:.78rem;color:var(--text2);font-family:var(--font-mono);margin-bottom:8px}
+.portrait-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:8px}
+.portrait-tag{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);color:var(--gold2);font-size:.68rem;padding:3px 9px;border-radius:12px;font-family:var(--font-mono)}
+
+.parchment-card{background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(139,26,26,.04));border:1px solid var(--border);border-radius:var(--radius);padding:36px;position:relative;overflow:hidden}
 .parchment-card::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='.02'/%3E%3C/svg%3E");opacity:.4;pointer-events:none}
-.wax-seal{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--crimson),var(--crimson2));border:2px solid rgba(212,175,55,.3);font-size:1.4rem;margin-bottom:20px;box-shadow:0 4px 16px rgba(139,26,26,.4)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px}
-.about-text p{color:var(--text2);line-height:1.9;margin-bottom:20px;font-size:1rem;font-family:var(--font-sub)}
+.wax-seal{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--crimson),var(--crimson2));border:2px solid rgba(212,175,55,.3);font-size:1.3rem;margin-bottom:16px;box-shadow:0 4px 16px rgba(139,26,26,.4)}
+.about-text p{color:var(--text2);line-height:1.85;margin-bottom:18px;font-size:1rem;font-family:var(--font-sub)}
 .about-text p strong{color:var(--text);font-family:var(--font-body)}
-.about-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ===== ACADEMIC CHRONICLE — SCHOLASTIC RECORD ===== */
+.education-section{margin-top:44px}
+.education-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.education-title{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--gold);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.academic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.academic-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px;transition:all .3s ease;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.academic-card:hover{background:var(--surface);border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.4),var(--glow)}
+.academic-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s}
+.academic-card:hover::before{opacity:1}
+.academic-badge{display:inline-flex;align-items:center;gap:5px;align-self:flex-start;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.25);color:var(--gold2);font-size:.68rem;padding:3px 9px;border-radius:20px;font-family:var(--font-mono);letter-spacing:.04em;margin-bottom:12px}
+.academic-badge.distinction{background:rgba(126,240,212,.08);border-color:rgba(126,240,212,.25);color:var(--cyan)}
+.academic-inst{font-family:var(--font-display);font-size:1.02rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.35}
+.academic-degree{font-size:.82rem;color:var(--gold);font-weight:600;font-family:var(--font-mono);margin-bottom:8px}
+.academic-score-row{display:flex;align-items:baseline;gap:6px;margin:8px 0}
+.academic-score{font-family:var(--font-display);font-size:1.45rem;font-weight:900;color:var(--cyan);letter-spacing:-.02em}
+.academic-score-label{font-size:.74rem;color:var(--text3);font-family:var(--font-mono)}
+.academic-desc{font-size:.82rem;color:var(--text2);line-height:1.6;font-family:var(--font-sub);margin-top:auto}
+
+.skills-section{margin-top:40px}
+.about-skills-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .skill-chip{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;transition:all .25s;position:relative;overflow:hidden}
 .skill-chip::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s}
 .skill-chip:hover{background:var(--surface2);border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--glow)}
@@ -331,11 +365,18 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
 .magic-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--gold),var(--border),transparent);margin:0}
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .about-top-grid{grid-template-columns:1fr}
+  .academic-grid{grid-template-columns:repeat(2,1fr)}
+  .about-skills-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:768px){
   .container{padding:0 20px}
   nav{width:calc(100% - 28px);border-radius:16px;flex-wrap:wrap;justify-content:center;gap:6px}
   .nav-links{display:none}
-  .about-grid{grid-template-columns:1fr}
+  .about-top-grid{grid-template-columns:1fr}
+  .academic-grid{grid-template-columns:1fr}
+  .about-skills-grid{grid-template-columns:1fr 1fr}
   .projects-grid{grid-template-columns:1fr}
   .project-card.featured,.project-card.full-width,.coming-soon-card{grid-column:span 1;grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
@@ -346,6 +387,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
   .modal{padding:28px 20px}
 }
 @media(max-width:480px){
+  .academic-grid{grid-template-columns:1fr}
   .bento-grid{grid-template-columns:1fr}
   .bento-card.wide{grid-column:span 1}
   .about-skills-grid{grid-template-columns:1fr}
@@ -407,15 +449,16 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">
+        <img src="passport_size.png" alt="Kartik Garg" class="hero-avatar">
         <span class="hero-badge-dot"></span>
-        ✦ Open to PM · APM · Founder's Office roles
+        ✦ Open to PM · APM · Founder's Office roles · Thapar '27
       </div>
       <h1 class="hero-headline" id="hero-headline">
         <span class="line"><span class="word" style="--delay:.1s">Where</span> <span class="word gold-word" style="--delay:.18s">code</span> <span class="word" style="--delay:.26s">meets</span></span>
         <span class="line"><span class="word gold-word" style="--delay:.34s">magic.</span></span>
         <span class="line" style="margin-top:4px"><span class="word" style="font-size:.65em;--delay:.44s">Building</span> <span class="word cyan-word" style="font-size:.65em;--delay:.52s">products</span> <span class="word" style="font-size:.65em;--delay:.6s">that enchant.</span></span>
       </h1>
-      <p class="hero-sub" id="hero-sub">Computer Engineering student at <strong>Thapar Institute</strong>, Co-Founder & CPO of <strong>Rabonna</strong>. I turn user friction into enchanted products at the intersection of AI, UX, and growth — 9 products shipped, real metrics moved.</p>
+      <p class="hero-sub" id="hero-sub">Computer Engineering (B.E. COE) at <strong>Thapar Institute of Engineering and Technology</strong> (Batch 2023–2027 · CGPA 7.84), Co-Founder & CPO of <strong>Rabonna</strong>. I turn user friction into enchanted products at the intersection of AI, UX, and growth — 9 products shipped, real metrics moved.</p>
       <div class="hero-ctas" id="hero-ctas">
         <a href="#projects" class="btn-primary">📖 Explore the Spellbook ↓</a>
         <a href="#" class="btn-secondary" onclick="downloadResume(event)">📜 The Grimoire (Resume)</a>
@@ -452,17 +495,93 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
       <div class="section-label">// The Wizard's Origins</div>
       <h2 class="section-title">Builder. Thinker.<br>Execution Machine.</h2>
     </div>
-    <div class="about-grid">
+    
+    <!-- Top: Portrait + Bio Parchment -->
+    <div class="about-top-grid">
+      <!-- Portrait Card -->
+      <div class="portrait-card fade-up">
+        <div class="portrait-img-wrap">
+          <img src="passport_size.png" alt="Kartik Garg" class="portrait-img" loading="lazy">
+          <div class="portrait-badge-overlay"><span>⚡</span> Lumos Active</div>
+        </div>
+        <div class="portrait-details">
+          <div class="portrait-name">Kartik Garg</div>
+          <div class="portrait-title">Computer Engineering · Thapar '27</div>
+          <div class="portrait-meta">
+            <span class="portrait-tag">🏛️ Thapar University</span>
+            <span class="portrait-tag">⭐ CGPA: 7.84</span>
+            <span class="portrait-tag">🏰 Founder @ Rabonna</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio Parchment -->
       <div class="about-text fade-up">
-        <div class="parchment-card" style="margin-bottom:24px">
+        <div class="parchment-card" style="margin-bottom:20px">
           <div class="wax-seal">⚡</div>
           <p>I'm not just a coder who learned product. I'm someone who genuinely <strong>obsesses over broken systems</strong> — why does this flow confuse users? Why does this product have all the features but none of the retention? That question drives everything I build.</p>
         </div>
-        <p>At Thapar, I realized early that <strong>code alone doesn't create value</strong>. A product lives or dies on the quality of decisions made before a single line is written. So I've spent the last two years studying user psychology, GTM strategy, and AI systems simultaneously.</p>
+        <p>At <strong>Thapar Institute of Engineering and Technology</strong> (B.E. Computer Engineering, 2023–2027), I realized early that <strong>code alone doesn't create value</strong>. A product lives or dies on the quality of decisions made before a single line is written. So I've spent the last two years studying user psychology, GTM strategy, and AI systems simultaneously.</p>
         <p>As Co-Founder & CPO of <strong>Rabonna</strong>, I ran product from zero — customer discovery, B2B onboarding, marketplace growth ops. I've felt the real cost of a bad product decision. That sharpens judgment nothing else can.</p>
         <p>I think in <strong>systems, not features</strong>. I move fast without breaking user trust. I want to work where ownership is real and the problem is worth solving.</p>
       </div>
-      <div class="about-skills-grid fade-up">
+    </div>
+
+    <!-- Academic Chronicle — Scholastic Record -->
+    <div class="education-section fade-up">
+      <div class="education-header">
+        <div class="education-title">
+          <span>📜</span> Scholastic Chronicle & Academic Pedigree
+        </div>
+        <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--text3);letter-spacing:.06em">// Verified Academic Records</span>
+      </div>
+      <div class="academic-grid">
+        <!-- 1. Thapar Institute -->
+        <div class="academic-card">
+          <div class="academic-badge">✦ Current Undergraduate · 2023 – 2027</div>
+          <div class="academic-inst">Thapar Institute of Engineering and Technology</div>
+          <div class="academic-degree">B.E. — Computer Engineering (COE)</div>
+          <div class="academic-score-row">
+            <div class="academic-score">7.84</div>
+            <div class="academic-score-label">Current CGPA / 10.0</div>
+          </div>
+          <div class="academic-desc">Patiala, Punjab. Rigorous engineering curriculum in Machine Learning, Distributed Operating Systems, Database Management Systems, Data Structures & Algorithms, and Scalable Product Architecture.</div>
+        </div>
+
+        <!-- 2. Class XII -->
+        <div class="academic-card">
+          <div class="academic-badge distinction">✦ Senior Secondary (Class XII) · CBSE</div>
+          <div class="academic-inst">Agra Vanasthali Vidyalaya</div>
+          <div class="academic-degree">Higher Secondary · Science & Math</div>
+          <div class="academic-score-row">
+            <div class="academic-score">90.2%</div>
+            <div class="academic-score-label">CBSE Board Distinction</div>
+          </div>
+          <div class="academic-desc">Agra, Uttar Pradesh. Strong foundations in Physics, Chemistry, Advanced Mathematics, and Computer Science with distinguished academic performance.</div>
+        </div>
+
+        <!-- 3. Class X -->
+        <div class="academic-card">
+          <div class="academic-badge distinction">✦ Secondary School (Class X) · CBSE</div>
+          <div class="academic-inst">Prelude Public School</div>
+          <div class="academic-degree">Secondary School Education</div>
+          <div class="academic-score-row">
+            <div class="academic-score">92.4%</div>
+            <div class="academic-score-label">CBSE Board Distinction</div>
+          </div>
+          <div class="academic-desc">Agra, Uttar Pradesh. Graduated with 92.4% academic score with distinction across sciences, mathematics, and analytical foundations.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spell Disciplines (Skills Grid) -->
+    <div class="skills-section fade-up">
+      <div class="education-header">
+        <div class="education-title">
+          <span>🔮</span> Wizarding Disciplines & Core Competencies
+        </div>
+      </div>
+      <div class="about-skills-grid">
         <div class="skill-chip">
           <div class="skill-chip-icon">🔮</div>
           <div class="skill-chip-label">Divination & Roadmaps</div>
@@ -495,6 +614,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
         </div>
       </div>
     </div>
+
   </div>
 </section>
 

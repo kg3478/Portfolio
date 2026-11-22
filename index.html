@@ -471,14 +471,14 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
       <div class="hero-badge">
         <img src="passport_size.png" alt="Kartik Garg" class="hero-avatar">
         <span class="hero-badge-dot"></span>
-        ✦ Open to PM · APM · Founder's Office roles · Thapar '27
+        ✦ Open to PM · APM · Product Analyst roles · Thapar '27
       </div>
       <h1 class="hero-headline" id="hero-headline">
         <span class="line"><span class="word" style="--delay:.1s">Where</span> <span class="word gold-word" style="--delay:.18s">code</span> <span class="word" style="--delay:.26s">meets</span></span>
         <span class="line"><span class="word gold-word" style="--delay:.34s">magic.</span></span>
         <span class="line" style="margin-top:4px"><span class="word" style="font-size:.65em;--delay:.44s">Building</span> <span class="word cyan-word" style="font-size:.65em;--delay:.52s">products</span> <span class="word" style="font-size:.65em;--delay:.6s">that enchant.</span></span>
       </h1>
-      <p class="hero-sub" id="hero-sub">Computer Engineering (B.E. COE) at <strong>Thapar Institute of Engineering and Technology</strong> (Batch 2023–2027 · CGPA 7.84), Co-Founder & CPO of <strong>Rabonna</strong>. I turn user friction into enchanted products at the intersection of AI, UX, and growth — 9 products shipped, real metrics moved.</p>
+      <p class="hero-sub" id="hero-sub">Computer Engineering (B.E. COE) at <strong>Thapar Institute of Engineering and Technology</strong> (Batch 2023–2027 · CGPA 7.84), Co-Founder & CPO of <strong>Rabonna</strong>. I turn user friction into enchanted products at the intersection of AI, UX, and growth — 10 products shipped, real metrics moved.</p>
       <div class="hero-ctas" id="hero-ctas">
         <a href="#projects" class="btn-primary">📖 Explore the Spellbook ↓</a>
         <a href="#" class="btn-secondary" onclick="downloadResume(event)">📜 The Grimoire (Resume)</a>
@@ -486,7 +486,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
       </div>
       <div class="hero-stats" id="hero-stats">
         <div>
-          <div class="stat-num" data-count="9">0</div>
+          <div class="stat-num" data-count="10">0</div>
           <div class="stat-label">spells cast</div>
         </div>
         <div>
@@ -609,7 +609,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
         <div class="skill-chip">
           <div class="skill-chip-icon">🔮</div>
           <div class="skill-chip-label">Divination & Roadmaps</div>
-          <div class="skill-chip-sub">OKRs, roadmaps, prioritization</div>
+          <div class="skill-chip-sub">Roadmaps, prioritization, PRDs</div>
         </div>
         <div class="skill-chip">
           <div class="skill-chip-icon">🤖</div>
@@ -662,7 +662,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
           <div class="spell-badge featured">⭐ Featured · #1 Priority</div>
           <div class="spell-name-small">✦ Incendio — The Bakery Empire Charm</div>
           <div class="card-title">BakeFlow ERP</div>
-          <div class="card-role">// Full-Stack Multi-Tenant SaaS · India's Bakery ERP</div>
+          <div class="card-role">// Founder &amp; Product Manager · Multi-Tenant SaaS ERP for Bakeries</div>
           <div class="card-problem">Indian bakeries — especially small to medium — face severe operational inefficiencies: manual inventory leads to stockouts, paper bills mean no GST compliance, and high-cost traditional ERPs aren't built for them. BakeFlow solves all of this in a single cloud-hosted SaaS: inventory, AI invoice scanning, GST billing, WhatsApp delivery, CRM, and a public REST API.</div>
           <div class="card-impact">⚡ 16 modules · Multi-tenant · AI invoice scanning · GST compliant</div>
           <div class="card-stack">
@@ -859,15 +859,41 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
         </div>
       </div>
 
-      <!-- ===== 9. SENTRIX — COMING SOON ===== -->
-      <div class="coming-soon-card fade-up">
-        <div style="position:relative;z-index:1">
-          <div class="coming-soon-badge">🔮 Enchanting Now — Not Yet Deployed</div>
-          <div class="sentrix-title">SENTRIX</div>
-          <p class="sentrix-sub">Morsmordre — The All-Seeing Eye. An edge-first multimodal physical security platform fusing YOLOv8 object detection, 16kHz acoustic anomaly detection, dual-mode face recognition, and trajectory analysis into a unified 5-level Threat Confidence Index (TCI). AES-256-GCM evidence vault. Twilio emergency alerts.</p>
-          <div class="sentrix-actions">
-            <button class="btn-card btn-live" onclick="openModal('sentrix')" style="padding:12px 24px;font-size:.88rem">🔒 Explore Architecture</button>
-            <button class="btn-card btn-case" style="padding:12px 24px;font-size:.88rem;cursor:not-allowed;opacity:.6">🦉 Launching Soon</button>
+      <!-- ===== 9. SENTRIX — FEATURED ===== -->
+      <div class="project-card featured fade-up" style="--card-glow:rgba(168,85,247,.1)" id="card-sentrix">
+        <div>
+          <div class="spell-badge featured">⭐ Featured · Final-Year Capstone</div>
+          <div class="spell-name-small">✦ Morsmordre — The All-Seeing Eye</div>
+          <div class="card-title">SENTRIX</div>
+          <div class="card-role">// Product Lead (Team of 5) · Edge-AI Home Security Product</div>
+          <div class="card-problem">94–98% of burglar-alarm calls are false — so real alerts get ignored. SENTRIX is a "confirm-first" home security product running on a Raspberry Pi 5: 5 alarm levels, an owner-approved SOS before anyone is alerted, and video that never leaves the device. I designed the entire product architecture and roadmap.</div>
+          <div class="card-impact">⚡ False alarms 9 → 0 · Weapon AUROC 0.75 → 0.87 · Fire AUROC 0.59 → 0.96 · Inference 8.0s → 3.9s</div>
+          <div class="card-stack">
+            <span class="stack-tag">Product Architecture</span>
+            <span class="stack-tag">Roadmap</span>
+            <span class="stack-tag">Edge AI</span>
+            <span class="stack-tag">YOLO11n</span>
+            <span class="stack-tag">DINOv2</span>
+            <span class="stack-tag">Raspberry Pi 5</span>
+            <span class="stack-tag">Privacy by Design</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://sentrix-portal.onrender.com" target="_blank" class="btn-card btn-live">🔒 Live Portal <span class="arrow-icon">↗</span></a>
+            <a href="https://github.com/mehulperimal14/Sentrix" target="_blank" class="btn-card btn-github">GitHub <span class="arrow-icon">↗</span></a>
+            <button class="btn-card btn-case" onclick="openModal('sentrix')">📜 Read Prophecy</button>
+          </div>
+        </div>
+        <div class="card-visual">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(168,85,247,.05),rgba(126,240,212,.04));pointer-events:none"></div>
+          <div class="card-visual-inner">
+            <div style="font-size:3.5rem;margin-bottom:12px">🛡️</div>
+            <div class="card-visual-big">9 → 0</div>
+            <div class="card-visual-label">false alarms after redesign</div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap">
+              <span style="font-size:.7rem;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.15);color:var(--purple2);padding:4px 10px;border-radius:20px;font-family:var(--font-mono)">Confirm-First</span>
+              <span style="font-size:.7rem;background:rgba(126,240,212,.08);border:1px solid rgba(126,240,212,.15);color:var(--cyan);padding:4px 10px;border-radius:20px;font-family:var(--font-mono)">On-Device</span>
+              <span style="font-size:.7rem;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);color:var(--gold2);padding:4px 10px;border-radius:20px;font-family:var(--font-mono)">Edge AI</span>
+            </div>
           </div>
         </div>
       </div>
@@ -969,32 +995,42 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
       <div class="timeline fade-up">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2023 — Present</div>
-          <div class="timeline-title">Co-Founder & CPO</div>
-          <div class="timeline-org">Rabonna · Sports Venue Marketplace</div>
-          <div class="timeline-desc">Built the product strategy and GTM for a sports venue booking marketplace from zero. Led customer discovery, ran B2B venue onboarding, designed the core booking flow, signed MOUs, received grants, and managed growth metrics end-to-end. The Room of Requirement — built it when it was needed most.</div>
+          <div class="timeline-date">Jul 2026 — Present</div>
+          <div class="timeline-title">Founder &amp; Product Manager</div>
+          <div class="timeline-org">BakeFlow · Multi-Tenant SaaS ERP for Bakeries</div>
+          <div class="timeline-desc">Built a live SaaS ERP from a problem I found watching a home bakery run on a paper register — MVP recipe cost calculator first, then a 10+ feature backlog where every user story traces to a baker's problem. Human-in-the-loop AI invoice scanning, margin reports, WhatsApp invoices.</div>
+          <div class="timeline-tags">
+            <span class="stack-tag">Product</span><span class="stack-tag">SaaS</span><span class="stack-tag">AI</span><span class="stack-tag">0→1</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--purple2);box-shadow:0 0 12px rgba(168,85,247,.6)"></div>
+          <div class="timeline-date">Aug 2026 — Present</div>
+          <div class="timeline-title">Product Lead</div>
+          <div class="timeline-org">SENTRIX · Edge-AI Home Security (Final-Year Capstone)</div>
+          <div class="timeline-desc">Leading product for a team of 5 building a confirm-first home security system on Raspberry Pi 5. Designed the entire product architecture and roadmap — 5 alarm levels, owner-approved SOS, on-device privacy. False alarms cut 9 → 0; fire AUROC 0.59 → 0.96.</div>
+          <div class="timeline-tags">
+            <span class="stack-tag">Product Architecture</span><span class="stack-tag">Roadmap</span><span class="stack-tag">Edge AI</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--cyan);box-shadow:0 0 12px rgba(126,240,212,.6)"></div>
+          <div class="timeline-date">Jan 2025 — Mar 2026</div>
+          <div class="timeline-title">Co-Founder &amp; CPO</div>
+          <div class="timeline-org">Rabonna · Sports Venue Booking Marketplace, Patiala</div>
+          <div class="timeline-desc">Built the product strategy and GTM for a sports venue booking marketplace from zero. Led customer discovery, ran B2B venue onboarding, designed the core booking flow, signed MOUs, received grants, and modelled unit economics at 4.4x LTV:CAC. The Room of Requirement — built it when it was needed most.</div>
           <div class="timeline-tags">
             <span class="stack-tag">Product</span><span class="stack-tag">GTM</span><span class="stack-tag">B2B</span><span class="stack-tag">0→1</span>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--cyan);box-shadow:0 0 12px rgba(126,240,212,.6)"></div>
-          <div class="timeline-date">2023 — 2024</div>
+          <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 12px rgba(212,175,55,.6)"></div>
+          <div class="timeline-date">Apr 2025 — Apr 2026</div>
           <div class="timeline-title">Executive Board Member</div>
-          <div class="timeline-org">Innovation Council — Thapar Institute · Order of Phoenix Chapter</div>
-          <div class="timeline-desc">Managed innovation programs, mentored student builders, and helped run campus-wide hackathons and product challenges. Evaluated 50+ student startup pitches. Led the phoenix charge on product thinking across campus.</div>
+          <div class="timeline-org">Institution's Innovation Council — Thapar Institute</div>
+          <div class="timeline-desc">Handled marketing and logistics for four large innovation events reaching 6,000+ participants — brought in vendors for stalls and ran event operations end-to-end.</div>
           <div class="timeline-tags">
-            <span class="stack-tag">Leadership</span><span class="stack-tag">Mentorship</span><span class="stack-tag">Events</span>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--purple2);box-shadow:0 0 12px rgba(168,85,247,.6)"></div>
-          <div class="timeline-date">2022 — 2023</div>
-          <div class="timeline-title">Core Member</div>
-          <div class="timeline-org">Entrepreneurship Development Cell — Thapar · Hogwarts Founder's Guild</div>
-          <div class="timeline-desc">Worked on startup ecosystem building, organized speaker sessions with founders, and collaborated on product workshops for the campus community. Helped plant the seeds of the entrepreneurship magic.</div>
-          <div class="timeline-tags">
-            <span class="stack-tag">Startups</span><span class="stack-tag">Community</span><span class="stack-tag">Strategy</span>
+            <span class="stack-tag">Leadership</span><span class="stack-tag">Marketing</span><span class="stack-tag">Logistics</span><span class="stack-tag">Events</span>
           </div>
         </div>
       </div>
@@ -1090,13 +1126,13 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
     <div class="contact-card fade-up">
       <span class="contact-owl">🦉</span>
       <h2 class="contact-title">Cast your Patronus.<br><span class="contact-gold">Let's build together.</span></h2>
-      <p class="contact-sub">I'm actively looking for PM internships, APM roles, and Founder's Office positions. If you're building something ambitious in the wizarding world of tech — send an owl.</p>
+      <p class="contact-sub">I'm actively looking for PM and Product Analyst roles — internships and full-time. If you're building something ambitious in the wizarding world of tech — send an owl.</p>
       <div class="contact-links">
         <a href="https://github.com/kg3478/" target="_blank" class="contact-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
           GitHub Scroll
         </a>
-        <a href="https://github.com/kg3478/" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/kartik-garg-tiet" target="_blank" class="contact-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn Owl
         </a>
@@ -1113,7 +1149,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center}
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
-    <p class="footer-text">© 2025 Kartik Garg <span>⚡</span> Built with spells, not just code <span>✦</span> Thapar Institute of Engineering & Technology</p>
+    <p class="footer-text">© 2026 Kartik Garg <span>⚡</span> Built with spells, not just code <span>✦</span> Thapar Institute of Engineering & Technology</p>
     <p class="footer-text" style="margin-top:8px;font-style:italic;opacity:.5">"It is our choices that show what we truly are, far more than our abilities." — A. Dumbledore</p>
   </div>
 </footer>
@@ -1381,6 +1417,12 @@ function downloadResume(e) {
   const orig = btn.textContent;
   btn.textContent = '🪄 Accio Resume...';
   btn.style.opacity = '.7';
+  const a = document.createElement('a');
+  a.href = 'Kartik_Garg_Product_Manager_Resume.pdf';
+  a.download = 'Kartik_Garg_Product_Manager_Resume.pdf';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
   setTimeout(() => { btn.textContent = orig; btn.style.opacity = '1'; }, 2000);
 }
 
@@ -1601,30 +1643,27 @@ const modalData = {
     title: '🔒 SENTRIX',
     spell: 'Morsmordre — The All-Seeing Eye',
     content: `
-      <p><strong>SENTRIX v2.0</strong> is an edge-first multimodal physical security and threat orchestration platform fusing computer vision, acoustic telemetry, face recognition, and trajectory analysis into a unified threat index.</p>
+      <p><strong>SENTRIX</strong> is an edge-AI home security product built as our final-year capstone (CPG-299) at Thapar Institute of Engineering and Technology, Patiala — a team of 5, where I was <strong>Product Lead</strong>: the entire product architecture and roadmap were designed by me.</p>
       <div class="modal-section">
-        <h3>⚡ Sensor Fusion Architecture</h3>
+        <h3>🎯 The Problem</h3>
+        <p>94–98% of burglar-alarm calls are false (US DOJ), so owners and police learn to ignore alarms. India recorded 1,07,573 burglaries in 2023 (NCRB), 83% of them at night. The product problem isn't detection — it's trust.</p>
+      </div>
+      <div class="modal-section">
+        <h3>⚡ Product Decisions</h3>
         <ul>
-          <li>YOLOv8 object detection + motion scoring (multi-camera)</li>
-          <li>16kHz audio anomaly detection</li>
-          <li>Dual-mode face recognition (128-d deep embeddings + 512-bin HSV color descriptors)</li>
-          <li>Trajectory behaviour analysis (velocity + aspect-ratio + loitering model)</li>
-          <li>Cloud threat intelligence via Roboflow (weapon/fire detection)</li>
+          <li><strong>Confirm-first design</strong> — 5 alarm levels; the owner approves an SOS before emergency contacts are alerted. SENTRIX never auto-calls emergency services.</li>
+          <li><strong>Trustworthy-alarm rules</strong> — 2-of-3 confirmation and a person gate turn raw detector scores into alarms worth acting on.</li>
+          <li><strong>Privacy by design</strong> — video, faces and evidence stay on the device (Raspberry Pi 5); only alerts leave the home.</li>
+          <li><strong>Edge-first architecture</strong> — YOLO11n + DINOv2 running locally, so the product works without streaming footage to the cloud.</li>
         </ul>
       </div>
       <div class="modal-section">
-        <h3>🧠 XGBoost Late-Fusion Model</h3>
-        <p>All sensor inputs are fused into a unified 5-level Threat Confidence Index (TCI ∈ [0.0, 1.0]) using an XGBoost late-fusion model with Exponential Moving Average (EMA) temporal smoothing — eliminating single-sensor false positives.</p>
-      </div>
-      <div class="modal-section">
-        <h3>🔐 Security & Response</h3>
-        <ul>
-          <li>AES-256-GCM encrypted evidence vault</li>
-          <li>HMAC session tokens for all API access</li>
-          <li>Twilio SMS + voice call emergency alerts</li>
-          <li>5-level TCI escalation policy matrix</li>
-          <li>FastAPI WebSocket real-time dashboard</li>
-        </ul>
+        <h3>📊 Measured Results</h3>
+        <div class="modal-metric"><span class="modal-metric-label">False Alarms (Level 3+)</span><span class="modal-metric-value">9 → 0 replaying the failed first live session under final rules</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Weapon Detection AUROC</span><span class="modal-metric-value">0.75 → 0.87 (retrained on a self-built 977-frame dataset)</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Fire Detection AUROC</span><span class="modal-metric-value">0.59 → 0.96</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Edge Inference</span><span class="modal-metric-value">8.0s → 3.9s per clip on Raspberry Pi 5</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Role</span><span class="modal-metric-value">Product Lead · Team of 5 · Mentor: Dr. Ashutosh Mishra</span></div>
       </div>
     `
   },
@@ -1640,7 +1679,7 @@ const modalData = {
       <div class="modal-section">
         <h3>⚡ What I Built as CPO</h3>
         <ul>
-          <li>Led customer discovery — 40+ venue owner interviews & player interviews</li>
+          <li>Led customer discovery — venue owner &amp; player interviews across Patiala</li>
           <li>Designed the core booking flow (discovery → availability → booking → payment)</li>
           <li>Built B2B venue onboarding pipeline — target acquisition & pitch decks</li>
           <li>Defined product roadmap with prioritization framework</li>
@@ -1655,8 +1694,9 @@ const modalData = {
         <div class="modal-metric"><span class="modal-metric-label">Stage</span><span class="modal-metric-value">0→1 Marketplace Built</span></div>
         <div class="modal-metric"><span class="modal-metric-label">MOUs</span><span class="modal-metric-value">Venue partnerships signed</span></div>
         <div class="modal-metric"><span class="modal-metric-label">Grants</span><span class="modal-metric-value">Startup grants received</span></div>
-        <div class="modal-metric"><span class="modal-metric-label">User Research</span><span class="modal-metric-value">40+ interviews conducted</span></div>
-        <div class="modal-metric"><span class="modal-metric-label">Role</span><span class="modal-metric-value">Co-Founder & CPO · 2023–Present</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">User Research</span><span class="modal-metric-value">Venue owner &amp; player interviews</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Unit Economics (modelled)</span><span class="modal-metric-value">4.4x LTV:CAC · 4.1% net margin · Month-2 break-even (projections)</span></div>
+        <div class="modal-metric"><span class="modal-metric-label">Role</span><span class="modal-metric-value">Co-Founder & CPO · Jan 2025 – Mar 2026</span></div>
       </div>
       <div class="modal-section">
         <h3>💡 Key Learnings</h3>
